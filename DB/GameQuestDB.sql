@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(100) NOT NULL,
   `password` VARCHAR(100) NOT NULL,
-  `enable` TINYINT NULL,
+  `enabled` TINYINT NULL,
   `role` VARCHAR(100) NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC))
@@ -46,7 +46,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `GameQuestDB`;
-INSERT INTO `user` (`id`, `username`, `password`, `enable`, `role`) VALUES (1, 'BillyBob', '123', 1, 'user');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (1, 'BillyBob', '123', 1, 'user');
 
 COMMIT;
 
