@@ -8,6 +8,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+<title>Character Details</title>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="#">GameQuest</a>
@@ -22,11 +24,9 @@
 				<li class="nav-item"><a class="nav-link active"
 					aria-current="page" href="/">Home</a></li>
 				<li class="nav-item"><a class="nav-link active"
-					aria-current="page" href="CharacterDetails">Characters</a></li>
+					aria-current="page" href="GameList">GameList</a></li>
 				<li class="nav-item"><a class="nav-link active"
 					aria-current="page" href="GameDetails">GameDetails</a></li>
-				<li class="nav-item"><a class="nav-link active"
-					aria-current="page" href="GameList">GameList</a></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" role="button"
 					data-bs-toggle="dropdown" aria-expanded="false"> Dropdown </a>
@@ -45,12 +45,60 @@
 		</div>
 	</div>
 </nav>
-
-
 </head>
 <body>
-	<%-- 	${testUser} --%>
-	HOME PAGE
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12 text-center">
+				<h1>GAME TITLE Characters</h1>
+				<h3>GAME CHARACTER NAME</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-2">
+				<button type="button" class="btn btn-primary my-2">Character
+					List</button>
+				<button type="button" class="btn btn-primary my-2">Add New
+					Character</button>
+				<button type="button" class="btn btn-primary my-2">Updated
+					This Character</button>
+				<button type="button" class="btn btn-primary my-2">Delete
+					This Character</button>
+			</div>
+			<div class="col-8 text-center">
+				<div>INSERT CHARACTER IMAGE HERE</div>
+				<div>
+					<button type="button" class="btn btn-primary my-2">Previous
+						Character</button>
+					<button type="button" class="btn btn-primary my-2">Next
+						Character</button>
+				</div>
+			</div>
+		</div>	
+		<div class="row">
+			<div class="col-12 text-center">
+				<p>CHARACTER DESCRIPTION </p>		
+			</div>		
+		</div>
+		
+		<div class="row">
+			<div class="col-4 text-center">IMAGE 1</div>		
+			<div class="col-4 text-center">IMAGE 2</div>		
+			<div class="col-4 text-center">IMAGE 3</div>			
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
