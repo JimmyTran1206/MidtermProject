@@ -10,6 +10,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Character Details</title>
+</head>
+<body>
+<header>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="#">GameQuest</a>
@@ -45,8 +48,7 @@
 		</div>
 	</div>
 </nav>
-</head>
-<body>
+</header>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-12 text-center">

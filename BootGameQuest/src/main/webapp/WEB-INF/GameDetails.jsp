@@ -8,6 +8,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+</head>
+<body>
+<header>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="#">GameQuest</a>
@@ -43,9 +46,7 @@
 		</div>
 	</div>
 </nav>
-</head>
-<body>
-
+</header>
 GAME DETAILS PAGE
 
 

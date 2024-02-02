@@ -8,6 +8,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+
+</head>
+<body>
+<header>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="#">GameQuest</a>
@@ -27,6 +32,8 @@
 					aria-current="page" href="GameDetails">GameDetails</a></li>
 				<li class="nav-item"><a class="nav-link active"
 					aria-current="page" href="GameList">GameList</a></li>
+				<li class="nav-item"><a class="nav-link active"
+					aria-current="page" href="Profile">Profile</a></li>
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle" href="#" role="button"
 					data-bs-toggle="dropdown" aria-expanded="false"> Dropdown </a>
@@ -45,13 +52,7 @@
 		</div>
 	</div>
 </nav>
-
-
-</head>
-<body>
-	<%-- 	${testUser} --%>
-	HOME PAGE
-
+</header>
 
 
 
