@@ -1,5 +1,6 @@
 package com.skilldistillery.gamequest.entities;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,6 +19,9 @@ public class User {
 	private boolean enabled;
 
 	private String role;
+	
+	@Column(name="profile_picture")
+	private String profilePicture;
 
 	public User() {
 	}
