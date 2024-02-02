@@ -15,10 +15,10 @@ public class UserController {
 	@Autowired
 	private UserDAO userDAO;
 	
-	@GetMapping("/")
+	@GetMapping(value={"/", "home.do", ""})
 	public String home(Model model) {
-		User u = userDAO.authenticateUser("BillyBob", "123");
-		model.addAttribute("testUser", u);
-		return "home";
+		User u = userDAO.authenticateUser("admin", "admin");
+		model.addAttribute("loggedIn", u);
+		return "hometest";
 	}
 }
