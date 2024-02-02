@@ -29,5 +29,10 @@ public class PageController {
 		return "GameList";
 	}
 	
+	@GetMapping("Profile")
+	public String ProfilePage() {
+		return "Profile";
+	}
+	
 
 }
