@@ -89,7 +89,6 @@ public class UserController {
 			return "redirect:registerSuccess.do";
 		}
 		
-		
 	}
 	
 	@GetMapping(value="registerDuplicatedUser.do")
