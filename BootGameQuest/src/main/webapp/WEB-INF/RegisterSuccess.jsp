@@ -54,7 +54,7 @@
 								<button type="submit" class="btn btn-primary">Log In</button>
 							</form>
 							<p id="announcement" class="mt-3 text-primary">
-								Congratuation! You have successfully register an account. Please
+								Congratuation ${username}! You have successfully register an account. Please
 								log in using your registered username and password.</p>
 						</div>
 					</div>

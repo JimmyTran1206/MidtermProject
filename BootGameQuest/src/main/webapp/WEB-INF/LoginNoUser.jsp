@@ -13,6 +13,12 @@
 	crossorigin="anonymous">
 
 <title>Insert title here</title>
+
+<style>
+    .hidden{
+        display: none;
+    }
+</style>
 </head>
 <body>
 

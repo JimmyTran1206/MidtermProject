@@ -3,19 +3,25 @@
 <%@ taglib uri="jakarta.tags.core" prefix="c"%>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-	<div class="container-fluid">
+	<div class="container-fluid"
+		style="display: flex; justify-content: space-between;">
 
 		<!-- Home Icon -->
-		<a class="navbar-brand" href="#">GameQuest</a>
+		<div>
+			<a class="navbar-brand" href="#">GameQuest</a>
+		</div>
 		<!-- Home Icon -->
 
 
 		<!-- Search form -->
-		<form class="d-flex" role="search">
-			<input class="form-control me-2" type="search" placeholder="Search"
-				aria-label="Search">
-			<button class="btn btn-outline-success" type="submit">Search</button>
-		</form>
+		<div>
+			<form class="d-flex" role="search">
+				<input class="form-control me-2" type="search" placeholder="Search"
+					aria-label="Search">
+				<button class="btn btn-outline-success" type="submit">Search</button>
+			</form>
+		</div>
+
 		<!-- Search form -->
 
 
@@ -45,10 +51,7 @@
 						aria-current="page" href="">Your game list</a></li>
 					<!-- Link user game list -->
 
-					<!-- Link log out -->
-					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="logout.do">Sign out</a></li>
-					<!-- Link log out -->
+
 				</c:if>
 
 				<!-- ADMIN NAV VIEW -->
@@ -59,39 +62,42 @@
 						aria-current="page" href="">View all users</a></li>
 					<!-- Link view all users -->
 
-					<!-- Link log out -->
-					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="logout.do">Sign out</a></li>
-					<!-- Link log out -->
 				</c:if>
 
 				<!--END: LOGIN LOGIC -->
 
 
-				<!-- Drop-down menu -->
-				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href="#" role="button"
-					data-bs-toggle="dropdown" aria-expanded="false"> Dropdown </a>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">Action</a></li>
-						<li><a class="dropdown-item" href="#">Another action</a></li>
-						<li><hr class="dropdown-divider"></li>
-						<li><a class="dropdown-item" href="#">Something else here</a></li>
-					</ul></li>
-				<!-- Drop-down menu -->
-
-				<!-- Profile picture -->
+				<!-- Profile picture and Drop-down menu -->
 				<c:if test="${!empty loggedIn && loggedIn.enabled==true}">
-					<li class="nav-item">
-						<div style="display: flex;">
-							<div>
-								<img src="${loggedIn.profilePicture}" alt="profile-picture" height="50px">
+
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false"
+						style="display: inline-block; margin: auto">
+							<div style="display: flex;">
+								<div>
+									<img src="${loggedIn.profilePicture}" alt="profile-picture"
+										height="50px">
+								</div>
+								<div>${loggedIn.username}</div>
+								<div>
+									<img src="https://static.thenounproject.com/png/335867-200.png"
+										alt="setting-wheel" height="50px">
+								</div>
 							</div>
-							<div>${loggedIn.username}</div>
-						</div>
-					</li>
+					</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="#">Profile</a></li>
+							<li><a class="dropdown-item" href="logout.do">Sign out</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="#">Something else
+									here</a></li>
+						</ul></li>
+
 				</c:if>
-				<!-- Profile picture -->
+
+				<!-- Profile picture and Drop-down menu -->
+
 			</ul>
 		</div>
 		<!-- Nav content menu -->

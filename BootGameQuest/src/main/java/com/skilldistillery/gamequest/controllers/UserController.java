@@ -84,7 +84,10 @@ public class UserController {
 			redir.addFlashAttribute("username", user.getUsername());
 			return "redirect:registerDuplicatedUser.do";
 		}else {
+			user.setProfilePicture("https://cdn-icons-png.flaticon.com/512/149/149071.png");
 			user.setEnabled(true);
+			user.setRole("user");
+			redir.addFlashAttribute("username", user.getUsername());
 			userDAO.addUser(user);
 			return "redirect:registerSuccess.do";
 		}
@@ -92,7 +95,7 @@ public class UserController {
 	}
 	
 	@GetMapping(value="registerDuplicatedUser.do")
-	public String registerDuplicatedUser(String username, Model model) {
+	public String registerDuplicatedUser() {
 		return "RegisterDuplicatedUser";
 	}
 	
