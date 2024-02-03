@@ -19,6 +19,6 @@ public class UserController {
 	public String home(Model model) {
 		User u = userDAO.authenticateUser("admin", "admin");
 		model.addAttribute("loggedIn", u);
-		return "hometest";
+		return "home";
 	}
 }
