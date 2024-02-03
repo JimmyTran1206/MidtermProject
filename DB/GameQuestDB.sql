@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(100) NOT NULL,
   `password` VARCHAR(100) NOT NULL,
-  `enabled` TINYINT NULL,
+  `enabled` TINYINT NULL DEFAULT 1,
   `role` VARCHAR(100) NULL,
   `profile_picture` VARCHAR(1000) NULL DEFAULT 'https://cdn-icons-png.flaticon.com/512/149/149071.png',
   PRIMARY KEY (`id`),
@@ -266,9 +266,10 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `GameQuestDB`;
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `profile_picture`) VALUES (1, 'admin', 'admin', 1, 'admin', 'https://cdn-icons-png.flaticon.com/512/149/149071.png');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `profile_picture`) VALUES (1, 'admin', 'admin', 1, 'admin', 'https://png.pngtree.com/png-vector/20190629/ourmid/pngtree-office-work-user-icon-avatar-png-image_1527655.jpg');
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `profile_picture`) VALUES (2, 'BillyBob', '123', 1, 'user', 'https://cdn-icons-png.flaticon.com/512/149/149071.png');
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `profile_picture`) VALUES (3, 'JohnnyCage', '123', 0, 'user', 'https://cdn-icons-png.flaticon.com/512/149/149071.png');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `profile_picture`) VALUES (4, 'KintaroCao', '123', 1, 'user', 'https://cdn-icons-png.flaticon.com/512/149/149071.png');
 
 COMMIT;
 
