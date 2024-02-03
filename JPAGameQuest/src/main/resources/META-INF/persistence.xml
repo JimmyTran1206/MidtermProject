@@ -5,6 +5,21 @@
 	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
 	<class>com.skilldistillery.gamequest.entities.User</class>
+	
+	<class>com.skilldistillery.gamequest.entities.Game</class>
+	
+	<class>com.skilldistillery.gamequest.entities.GameImage</class>
+	
+	<class>com.skilldistillery.gamequest.entities.GameCharacter</class>
+	
+	<class>com.skilldistillery.gamequest.entities.GameCharacterImage</class>
+	
+	<class>com.skilldistillery.gamequest.entities.Company</class>
+	
+	<class>com.skilldistillery.gamequest.entities.Platform</class>
+	
+	<class>com.skilldistillery.gamequest.entities.Genre</class>
+	
 
     <properties>
       <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/GameQuestDB?useSSL=false" />
