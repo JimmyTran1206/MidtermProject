@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -14,10 +15,11 @@
 <body>
 	<header>
 		<jsp:include page="nav.jsp" />
-
 	</header>
 
-This is the home page
+	<c:forEach items="${games}" var="game">
+		<p>${game.title}</p>
+	</c:forEach>
 
 
 	<script
