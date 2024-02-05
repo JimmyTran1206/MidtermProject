@@ -27,12 +27,12 @@ public class UserController {
 
 	@GetMapping(value = "login.do")
 	public String showLoginBlank() {
-		return "LoginBlank";
+		return "User/LoginBlank";
 	}
 
 	@GetMapping(value = "register.do")
 	public String showRegisterBlank() {
-		return "RegisterBlank";
+		return "User/RegisterBlank";
 	}
 
 	// userLogin.do - handle user login
@@ -58,12 +58,12 @@ public class UserController {
 
 	@GetMapping(value="loginNoUser.do")
 	public String loginNoUser() {
-		return "LoginNoUser";
+		return "User/LoginNoUser";
 	}
 	
 	@GetMapping(value="deactivatedUser.do")
 	public String deactivatedUser() {
-		return "DeactivatedUser";
+		return "User/DeactivatedUser";
 	}
 	
 	// handle logout.do
@@ -97,12 +97,12 @@ public class UserController {
 	
 	@GetMapping(value="registerDuplicatedUser.do")
 	public String registerDuplicatedUser() {
-		return "RegisterDuplicatedUser";
+		return "User/RegisterDuplicatedUser";
 	}
 	
 	@GetMapping(value="registerSuccess.do")
 	public String registerSuccess() {
-		return "RegisterSuccess";
+		return "User/RegisterSuccess";
 	}
 	
 	// handle view profile for user and admin
@@ -111,9 +111,9 @@ public class UserController {
 		User currentUser = (User) session.getAttribute("loggedIn");
 		model.addAttribute("user", currentUser);
 		if(currentUser.getRole().equals("admin")) {
-			return "ProfileAdmin";
+			return "User/ProfileAdmin";
 		}else {
-			return "ProfileUser";
+			return "User/ProfileUser";
 		}
 	}
 	
@@ -122,7 +122,7 @@ public class UserController {
 	public String updateProfile(HttpSession session, Model model) {
 		User currentUser = (User) session.getAttribute("loggedIn");
 		model.addAttribute("user", currentUser);
-		return "ProfileUpdate";
+		return "User/ProfileUpdate";
 	}
 	
 	// handle update confirm
@@ -136,7 +136,7 @@ public class UserController {
 	// userSelfDeactivate.do
 	@GetMapping(value="userSelfDeactivate.do")
 	public String userSelfDeactivated() {
-		return "UserSelfDeactivatedWarning";
+		return "User/UserSelfDeactivatedWarning";
 	}
 	
 	// userSelfDeactivatedConfirmed.do

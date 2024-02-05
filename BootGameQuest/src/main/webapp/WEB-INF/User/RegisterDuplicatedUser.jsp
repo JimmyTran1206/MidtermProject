@@ -22,7 +22,7 @@
 <body>
 
 	<header>
-		<jsp:include page="nav.jsp" />
+		<jsp:include page="../nav.jsp" />
 
 	</header>
 
