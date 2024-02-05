@@ -169,36 +169,8 @@ public class Game {
 		this.gameUsers = gameUsers;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(avatarUrl, company, description, gameImages, gamePlatforms, gameUsers, genres, id, rating,
-				releaseDate, title, trailerUrl, userId);
-	}
+	
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Game other = (Game) obj;
-		return Objects.equals(avatarUrl, other.avatarUrl) && Objects.equals(company, other.company)
-				&& Objects.equals(description, other.description) && Objects.equals(gameImages, other.gameImages)
-				&& Objects.equals(gamePlatforms, other.gamePlatforms) && Objects.equals(gameUsers, other.gameUsers)
-				&& Objects.equals(genres, other.genres) && id == other.id && Objects.equals(rating, other.rating)
-				&& Objects.equals(releaseDate, other.releaseDate) && Objects.equals(title, other.title)
-				&& Objects.equals(trailerUrl, other.trailerUrl) && userId == other.userId;
-	}
-
-	@Override
-	public String toString() {
-		return "Game [id=" + id + ", title=" + title + ", description=" + description + ", releaseDate=" + releaseDate
-				+ ", avatarUrl=" + avatarUrl + ", trailerUrl=" + trailerUrl + ", userId=" + userId + ", company="
-				+ company + ", rating=" + rating + ", gameImages=" + gameImages + ", gamePlatforms=" + gamePlatforms
-				+ ", genres=" + genres + ", gameUsers=" + gameUsers + "]";
-	}
 
 	public void addGenre(Genre genre) {
 		if (genres == null) {
