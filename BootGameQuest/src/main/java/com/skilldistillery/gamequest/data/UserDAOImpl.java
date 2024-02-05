@@ -1,5 +1,7 @@
 package com.skilldistillery.gamequest.data;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.gamequest.entities.User;
@@ -49,6 +51,18 @@ public class UserDAOImpl implements UserDAO {
 		em.flush();
 		return user;
 	}
+	
+	@Override
+	public User activateUserById(int id) {
+		User user = em.find(User.class, id);
+		if (user == null) {
+			return null;
+		}
+		user.setEnabled(true);
+		em.flush();
+		return user;
+	}
+
 
 	@Override
 	public int updateUserByInfo(User userNewInfo) {
@@ -69,6 +83,41 @@ public class UserDAOImpl implements UserDAO {
 		} catch (Exception e) {
 			return null;
 		}		
+	}
+
+	@Override
+	public List<User> getAllUser() {
+		try {
+			String query = "SELECT u FROM User u WHERE u.id>1";
+			List<User> userList = em.createQuery(query, User.class).getResultList();
+			return userList;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	@Override
+	public List<User> getUsersByUsername(String username) {
+		try {
+			String query = "SELECT u FROM User u WHERE u.username LIKE :name AND u.id>1";
+			List<User> userList = em.createQuery(query, User.class).setParameter("name", "%" + username +"%")
+					.getResultList();
+			return userList;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	@Override
+	public List<User> getUsersByid(int id) {
+		try {
+			String query = "SELECT u FROM User u WHERE u.id=:userId";
+			List<User> userList = em.createQuery(query, User.class).setParameter("userId", id)
+					.getResultList();
+			return userList;
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 }

@@ -1,10 +1,16 @@
 package com.skilldistillery.gamequest.controllers;
 
+<<<<<<< HEAD
+import java.util.List;
+
+=======
+>>>>>>> 63f70f0d128e601601d2b8de5630d1be6dee355f
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.gamequest.data.GameDAO;
@@ -17,13 +23,12 @@ import jakarta.servlet.http.HttpSession;
 public class UserController {
 	@Autowired
 	private UserDAO userDAO;
-	
+
 //	@GetMapping(value = { "/", "home.do", "" })
 //	public String home() {
-//		// User u = userDAO.authenticateUser("JohnnyCage", "123");
-//		// model.addAttribute("loggedIn", u);
 //		return "home";
 //	}
+	
 
 	@GetMapping(value = "login.do")
 	public String showLoginBlank() {
@@ -56,35 +61,35 @@ public class UserController {
 		}
 	}
 
-	@GetMapping(value="loginNoUser.do")
+	@GetMapping(value = "loginNoUser.do")
 	public String loginNoUser() {
 		return "User/LoginNoUser";
 	}
-	
-	@GetMapping(value="deactivatedUser.do")
+
+	@GetMapping(value = "deactivatedUser.do")
 	public String deactivatedUser() {
 		return "User/DeactivatedUser";
 	}
-	
+
 	// handle logout.do
-	@GetMapping(value="logout.do")
+	@GetMapping(value = "logout.do")
 	public String logout(HttpSession session) {
 		session.removeAttribute("loggedIn");
 		return "home";
 	}
-	
+
 	// userRegister.do - handle user register
 	@PostMapping(value = "userRegister.do")
-	public String userRegister(User user, HttpSession session,RedirectAttributes redir) {
+	public String userRegister(User user, HttpSession session, RedirectAttributes redir) {
 		User currentUser = (User) session.getAttribute("loggedIn");
 		if (currentUser != null) {
 			session.removeAttribute("loggedIn");
 			return "redirect:register.do";
 		}
-		if (userDAO.findUserByUsername(user.getUsername())!=null) {
+		if (userDAO.findUserByUsername(user.getUsername()) != null) {
 			redir.addFlashAttribute("username", user.getUsername());
 			return "redirect:registerDuplicatedUser.do";
-		}else {
+		} else {
 			user.setProfilePicture("https://cdn-icons-png.flaticon.com/512/149/149071.png");
 			user.setEnabled(true);
 			user.setRole("user");
@@ -92,61 +97,109 @@ public class UserController {
 			userDAO.addUser(user);
 			return "redirect:registerSuccess.do";
 		}
-		
+
 	}
-	
-	@GetMapping(value="registerDuplicatedUser.do")
+
+	@GetMapping(value = "registerDuplicatedUser.do")
 	public String registerDuplicatedUser() {
 		return "User/RegisterDuplicatedUser";
 	}
-	
-	@GetMapping(value="registerSuccess.do")
+
+	@GetMapping(value = "registerSuccess.do")
 	public String registerSuccess() {
 		return "User/RegisterSuccess";
 	}
-	
+
 	// handle view profile for user and admin
-	@GetMapping(value="viewProfile.do")
+	@GetMapping(value = "viewProfile.do")
 	public String showProfile(HttpSession session, Model model) {
 		User currentUser = (User) session.getAttribute("loggedIn");
 		model.addAttribute("user", currentUser);
-		if(currentUser.getRole().equals("admin")) {
+		if (currentUser.getRole().equals("admin")) {
 			return "User/ProfileAdmin";
-		}else {
+		} else {
 			return "User/ProfileUser";
 		}
 	}
-	
+
 	// handle view update profile (same for both user and admin)
-	@GetMapping(value="updateProfile.do")
+	@GetMapping(value = "updateProfile.do")
 	public String updateProfile(HttpSession session, Model model) {
 		User currentUser = (User) session.getAttribute("loggedIn");
 		model.addAttribute("user", currentUser);
 		return "User/ProfileUpdate";
 	}
-	
+
 	// handle update confirm
-	@PostMapping(value="updateProfileConfirm.do")
+	@PostMapping(value = "updateProfileConfirm.do")
 	public String updateProfileConfirmed(User user, HttpSession session) {
-		User updatedUser= userDAO.findUserById(userDAO.updateUserByInfo(user));
+		User updatedUser = userDAO.findUserById(userDAO.updateUserByInfo(user));
 		session.setAttribute("loggedIn", updatedUser);
 		return "redirect:viewProfile.do";
 	}
-	
+
 	// userSelfDeactivate.do
-	@GetMapping(value="userSelfDeactivate.do")
+	@GetMapping(value = "userSelfDeactivate.do")
 	public String userSelfDeactivated() {
 		return "User/UserSelfDeactivatedWarning";
 	}
-	
+
 	// userSelfDeactivatedConfirmed.do
-	@GetMapping(value="userSelfDeactivateConfirmed.do")
+	@GetMapping(value = "userSelfDeactivateConfirmed.do")
 	public String userSelfDeactivatedConfirmed(HttpSession session) {
 		User currentUser = (User) session.getAttribute("loggedIn");
 		userDAO.deactivateUserById(currentUser.getId());
 		session.removeAttribute("loggedIn");
 		return "redirect:home.do";
 	}
-	
 
+	// admin- view all users
+	@GetMapping(value = "viewAllUsers.do")
+	public String adminViewAllUsers(Model model) {
+		List<User> userList = userDAO.getAllUser();
+		model.addAttribute("userList", userList);
+		return "User/AdminViewAllUsers";
+	}
+
+	// admin - view single user profile
+	@GetMapping(value = "viewSingleUser.do")
+	public String adminViewSingleUser(Model model, @RequestParam("id") int id) {
+		User user = userDAO.findUserById(id);
+		model.addAttribute("user", user);
+		return "User/AdminViewSingleUser";
+	}
+
+	// admin - activate user account
+	@GetMapping(value = "adminActivateUser.do")
+	public String adminActivateUser(Model model, @RequestParam("id") int id) {
+		User user = userDAO.activateUserById(id);
+		model.addAttribute("user", user);
+		return "User/AdminViewSingleUser";
+	}
+
+	// admin - deactivate user account
+	@GetMapping(value = "adminDeactivateUser.do")
+	public String adminDeactivateUser(Model model, @RequestParam("id") int id) {
+		User user = userDAO.deactivateUserById(id);
+		model.addAttribute("user", user);
+		return "User/AdminViewSingleUser";
+	}
+
+	// admin - search user by Id
+	@GetMapping(value = "adminSearchUserById.do")
+	public String adminSearchUserById(Model model, @RequestParam("searchId") int id) {
+		List<User> userList = userDAO.getUsersByid(id);
+		model.addAttribute("id", id);
+		model.addAttribute("userList", userList);
+		return "User/AdminSearchUserById";
+	}
+	// admin - search user by Name
+	@GetMapping(value = "adminSearchUserByName.do")
+	public String adminSearchUserByName(Model model, @RequestParam("searchName") String name) {
+		List<User> userList = userDAO.getUsersByUsername(name);
+		model.addAttribute("name", name);
+		model.addAttribute("userList", userList);
+		return "User/AdminSearchUserByName";
+	}
+	
 }

@@ -24,13 +24,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12 text-center my-4">
-					<h1>Admin's Profile</h1>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-12 text-center my-4">
-					<h2>Welcome to your personal dashboard</h2>
+					<h1>${user.username}'sProfile</h1>
 				</div>
 			</div>
 
@@ -40,27 +34,54 @@
 						style="border-radius: 50%" alt="profile picture" />
 				</div>
 			</div>
+			<div class="row">
+				<div class="col-3"></div>
+
+				<div class="col-6 my-4">
+					<h3>Account info</h3>
+					<p style="font-size: 1.2rem;">User name: ${user.username}</p>
+					<p style="font-size: 1.2rem;">Password: ${user.password}</p>
+					<p style="font-size: 1.2rem;">Number of games: XXX</p>
+				</div>
+
+				<div class="col-3"></div>
+			</div>
 
 			<div class="row">
 				<div class="col-2"></div>
+
 
 				<div class="col-8 text-center my-4">
-					<a href="updateProfile.do" class="btn btn-primary my-2 mx-2">
-						Update Profile </a>
+					<c:if test="${user.enabled == true}">
+						<h3 class="bg-primary">This account is currently activated.</h3>
+						<a href="adminDeactivateUser.do?id=${user.id}"
+							class="btn btn-danger my-2 mx-2"> Deactivate this account </a>
+					</c:if>
+					<c:if test="${user.enabled == false}">
+						<h3 class="bg-danger">This account is currently deactivated.</h3>
+						<a href="adminActivateUser.do?id=${user.id}"
+							class="btn btn-primary my-2 mx-2"> Activate this account </a>
+					</c:if>
 				</div>
+				<div class="col-2"></div>
+			</div>
+			
+			<div class="row">
+				<div class="col-2"></div>
 
+
+				<div class="col-8 text-center my-4">
+
+						<a href="viewAllUsers.do"
+							class="btn btn-success my-2 mx-2"> Back to User List </a>
+				</div>
 				<div class="col-2"></div>
 			</div>
 
-			<div class="row">
-				<div class="col-12 text-center my-4">
-					<h3>You currently have XXX users in GameQuest</h3>
-					<a href="viewAllUsers.do" class="btn btn-primary my-2 mx-2">
-						View your user list </a>
-				</div>
-			</div>
+
 		</div>
 	</main>
+
 
 
 
