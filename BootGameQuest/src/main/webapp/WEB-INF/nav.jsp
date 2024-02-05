@@ -8,7 +8,7 @@
 
 		<!-- Home Icon -->
 		<div>
-			<a class="navbar-brand" href="#">GameQuest</a>
+			<a href="home.do" class="navbar-brand" href="#">GameQuest</a>
 		</div>
 		<!-- Home Icon -->
 
