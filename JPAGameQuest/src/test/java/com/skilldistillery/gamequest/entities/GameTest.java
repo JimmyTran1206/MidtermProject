@@ -48,5 +48,26 @@ class GameTest {
 		assertNotNull(game.getTitle());
 		assertEquals("Minecraft", game.getTitle());
 	}
+	
+	@Test
+	void test_Game_rating_mapping() {
+		assertNotNull(game);
+		assertNotNull(game.getRating());
+		assertEquals(RatingSymbol.E, game.getRating().getRating());
+	}
+	
+	@Test
+	void test_Game_Company_mapping() {
+		assertNotNull(game);
+		assertNotNull(game.getCompany());
+		assertEquals("Microsoft", game.getCompany().getName());
+	}
+	
+	@Test
+	void test_Game_has_Game_images() {
+		assertNotNull(game);
+		assertNotNull(game.getGameImages());
+		assertTrue(game.getGameImages().size() == 3);
+	}
 
 }

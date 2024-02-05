@@ -1,6 +1,7 @@
 package com.skilldistillery.gamequest.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -8,6 +9,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Game {
@@ -32,11 +36,16 @@ public class Game {
 	@Column(name="user_id")
 	private int userId;
 	
-	@Column(name="company_id")
-	private int companyId;
+	@OneToOne
+	@JoinColumn(name="company_id")
+	private Company company;
 	
-	@Column(name="age_rating_id")
-	private int ageRatingId;
+	@OneToOne
+	@JoinColumn(name="age_rating_id")
+	private AgeRating rating;
+	
+	@OneToMany(mappedBy="game")
+	private List<GameImage> gameImages;
 	
 	public Game() {
 		
@@ -98,25 +107,34 @@ public class Game {
 		this.userId = userId;
 	}
 
-	public int getCompanyId() {
-		return companyId;
+	public Company getCompany() {
+		return company;
 	}
 
-	public void setCompanyId(int companyId) {
-		this.companyId = companyId;
+	public void setCompany(Company company) {
+		this.company = company;
 	}
 
-	public int getAgeRatingId() {
-		return ageRatingId;
+	public AgeRating getRating() {
+		return rating;
 	}
 
-	public void setAgeRatingId(int ageRatingId) {
-		this.ageRatingId = ageRatingId;
+	public void setRating(AgeRating rating) {
+		this.rating = rating;
+	}
+	
+	public List<GameImage> getGameImages() {
+		return gameImages;
+	}
+
+	public void setGameImages(List<GameImage> gameImages) {
+		this.gameImages = gameImages;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(ageRatingId, avatarUrl, companyId, description, id, releaseDate, title, trailerUrl, userId);
+		return Objects.hash(avatarUrl, company, description, gameImages, id, rating, releaseDate, title, trailerUrl,
+				userId);
 	}
 
 	@Override
@@ -128,8 +146,9 @@ public class Game {
 		if (getClass() != obj.getClass())
 			return false;
 		Game other = (Game) obj;
-		return ageRatingId == other.ageRatingId && Objects.equals(avatarUrl, other.avatarUrl)
-				&& companyId == other.companyId && Objects.equals(description, other.description) && id == other.id
+		return Objects.equals(avatarUrl, other.avatarUrl) && Objects.equals(company, other.company)
+				&& Objects.equals(description, other.description) && Objects.equals(gameImages, other.gameImages)
+				&& id == other.id && Objects.equals(rating, other.rating)
 				&& Objects.equals(releaseDate, other.releaseDate) && Objects.equals(title, other.title)
 				&& Objects.equals(trailerUrl, other.trailerUrl) && userId == other.userId;
 	}
@@ -137,9 +156,13 @@ public class Game {
 	@Override
 	public String toString() {
 		return "Game [id=" + id + ", title=" + title + ", description=" + description + ", releaseDate=" + releaseDate
-				+ ", avatarUrl=" + avatarUrl + ", trailerUrl=" + trailerUrl + ", userId=" + userId + ", companyId="
-				+ companyId + ", ageRatingId=" + ageRatingId + "]";
+				+ ", avatarUrl=" + avatarUrl + ", trailerUrl=" + trailerUrl + ", userId=" + userId + ", company="
+				+ company + ", rating=" + rating + ", gameImages=" + gameImages + "]";
 	}
+
+	
+
+	
 	
 	
 	
