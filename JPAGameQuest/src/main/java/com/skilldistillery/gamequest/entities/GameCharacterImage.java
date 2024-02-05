@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -20,8 +22,9 @@ public class GameCharacterImage {
 	@Column(name="image_url")
 	private String imageUrl;
 	
-	@Column(name="game_character_id")
-	private int gameCharacterId;
+	@ManyToOne
+	@JoinColumn(name="game_character_id")
+	private GameCharacter gameCharacter;
 	
 	public GameCharacterImage() {
 		
@@ -42,18 +45,21 @@ public class GameCharacterImage {
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
+	
 
-	public int getGameCharacterId() {
-		return gameCharacterId;
+	public GameCharacter getGameCharacter() {
+		return gameCharacter;
 	}
 
-	public void setGameCharacterId(int gameCharacterId) {
-		this.gameCharacterId = gameCharacterId;
+	public void setGameCharacter(GameCharacter gameCharacter) {
+		this.gameCharacter = gameCharacter;
 	}
+
+	
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(gameCharacterId, id, imageUrl);
+		return Objects.hash(gameCharacter, id, imageUrl);
 	}
 
 	@Override
@@ -65,14 +71,16 @@ public class GameCharacterImage {
 		if (getClass() != obj.getClass())
 			return false;
 		GameCharacterImage other = (GameCharacterImage) obj;
-		return Objects.equals(gameCharacterId, other.gameCharacterId) && id == other.id
+		return Objects.equals(gameCharacter, other.gameCharacter) && id == other.id
 				&& Objects.equals(imageUrl, other.imageUrl);
 	}
 
 	@Override
 	public String toString() {
-		return "GameCharacterImage [id=" + id + ", imageUrl=" + imageUrl + ", gameCharacterId=" + gameCharacterId + "]";
+		return "GameCharacterImage [id=" + id + ", imageUrl=" + imageUrl + ", gameCharacter=" + gameCharacter + "]";
 	}
+
+
 	
 	
 

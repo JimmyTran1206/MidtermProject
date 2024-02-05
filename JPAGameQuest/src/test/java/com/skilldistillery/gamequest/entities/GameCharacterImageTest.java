@@ -43,12 +43,10 @@ class GameCharacterImageTest {
 	}
 
 	@Test
-	void test_User_has_username() {
+	void test_GameCharacter_has_username() {
 		assertNotNull(charImg);
-		assertNotNull(charImg.getGameCharacterId());
-		assertEquals(5, charImg.getGameCharacterId());
-		
-
+		assertNotNull(charImg.getGameCharacter().getId());
+		assertEquals(5, charImg.getGameCharacter().getId());	
 	}
 
 }

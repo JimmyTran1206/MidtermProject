@@ -45,8 +45,8 @@ class GameImageTest {
 	@Test
 	void test_User_has_username() {
 		assertNotNull(gameImg);
-		assertNotNull(gameImg.getGameId());
-		assertEquals(1, gameImg.getGameId());
+		assertNotNull(gameImg.getGame().getId());
+		assertEquals(1, gameImg.getGame().getId());
 
 	}
 

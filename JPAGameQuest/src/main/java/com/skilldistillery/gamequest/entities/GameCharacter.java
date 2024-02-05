@@ -1,5 +1,6 @@
 package com.skilldistillery.gamequest.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -7,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,6 +28,9 @@ public class GameCharacter {
 	
 	@Column(name="game_id")
 	private int gameId;
+	
+	@OneToMany(mappedBy="gameCharacter")
+	private List<GameCharacterImage> charImages;
 	
 	public GameCharacter() {
 		
@@ -70,10 +75,18 @@ public class GameCharacter {
 	public void setGameId(int gameId) {
 		this.gameId = gameId;
 	}
+	
+	public List<GameCharacterImage> getCharImages() {
+		return charImages;
+	}
+
+	public void setCharImages(List<GameCharacterImage> charImages) {
+		this.charImages = charImages;
+	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(avatarUrl, description, gameId, id, name);
+		return Objects.hash(avatarUrl, charImages, description, gameId, id, name);
 	}
 
 	@Override
@@ -85,8 +98,9 @@ public class GameCharacter {
 		if (getClass() != obj.getClass())
 			return false;
 		GameCharacter other = (GameCharacter) obj;
-		return Objects.equals(avatarUrl, other.avatarUrl) && Objects.equals(description, other.description)
-				&& gameId == other.gameId && id == other.id && Objects.equals(name, other.name);
+		return Objects.equals(avatarUrl, other.avatarUrl) && Objects.equals(charImages, other.charImages)
+				&& Objects.equals(description, other.description) && gameId == other.gameId && id == other.id
+				&& Objects.equals(name, other.name);
 	}
 
 	@Override

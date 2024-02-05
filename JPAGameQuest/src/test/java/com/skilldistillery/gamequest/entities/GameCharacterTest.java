@@ -49,5 +49,12 @@ class GameCharacterTest {
 		assertEquals("Ender dragon", character.getName());
 
 	}
+	@Test
+	void test_character_has_images() {
+		GameCharacter gameChar = em.find(GameCharacter.class, 5);
+		assertNotNull(gameChar);
+		assertNotNull(gameChar.getCharImages());
+		assertTrue(gameChar.getCharImages().size() > 2);
+	}
 
 }
