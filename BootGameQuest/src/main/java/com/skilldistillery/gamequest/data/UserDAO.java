@@ -8,5 +8,5 @@ public interface UserDAO {
 	public User findUserById(int id);
 	public User findUserByUsername(String username);
 	public User deactivateUserById(int id);
-	public void updateUserById(int id, User user);
+	public int updateUserByInfo(User userNewInfo);
 }
