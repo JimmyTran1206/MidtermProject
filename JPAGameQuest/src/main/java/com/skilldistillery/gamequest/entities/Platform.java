@@ -1,5 +1,7 @@
 package com.skilldistillery.gamequest.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -7,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Platform {
@@ -19,6 +22,9 @@ public class Platform {
 	
 	@Column(name="platform_url")
 	private String platformUrl;
+	
+	@ManyToMany(mappedBy="gamePlatforms")
+	private List<Game> games;
 	
 	public Platform() {
 		
@@ -48,9 +54,17 @@ public class Platform {
 		this.platformUrl = platformUrl;
 	}
 
+	public List<Game> getGames() {
+		return games;
+	}
+
+	public void setGames(List<Game> games) {
+		this.games = games;
+	}
+	
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name, platformUrl);
+		return Objects.hash(games, id, name, platformUrl);
 	}
 
 	@Override
@@ -62,12 +76,30 @@ public class Platform {
 		if (getClass() != obj.getClass())
 			return false;
 		Platform other = (Platform) obj;
-		return id == other.id && Objects.equals(name, other.name) && Objects.equals(platformUrl, other.platformUrl);
+		return Objects.equals(games, other.games) && id == other.id && Objects.equals(name, other.name)
+				&& Objects.equals(platformUrl, other.platformUrl);
 	}
 
 	@Override
 	public String toString() {
 		return "Platform [id=" + id + ", name=" + name + ", platformUrl=" + platformUrl + "]";
+	}
+	
+	public void addGame(Game game) {
+		if(games == null) {
+			games = new ArrayList<>();
+		}
+		if(!games.contains(game)) {
+			games.add(game);
+			game.addGamePlatform(this);
+		}
+	}
+	
+	public void removeGame(Game game) {
+		if(games != null && games.contains(game)) {
+			games.remove(game);
+			game.removeGamePlatform(this);
+		}
 	}
 	
 	

@@ -1,11 +1,14 @@
 package com.skilldistillery.gamequest.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Genre {
@@ -15,6 +18,9 @@ public class Genre {
 	private int id;
 	
 	private String name;
+	
+	@ManyToMany(mappedBy="genres")
+	private List<Game> games;
 	
 	public Genre() {
 		
@@ -56,6 +62,23 @@ public class Genre {
 	@Override
 	public String toString() {
 		return "Genre [id=" + id + ", name=" + name + "]";
+	}
+	
+	public void addGame(Game game) {
+		if(games == null) {
+			games = new ArrayList<>();
+		}
+		if(!games.contains(game)) {
+			games.add(game);
+			game.addGenre(this);
+		}
+	}
+	
+	public void removeGame(Game game) {
+		if(games != null && games.contains(game)) {
+			games.remove(game);
+			game.removeGenre(this);
+		}
 	}
 	
 	
