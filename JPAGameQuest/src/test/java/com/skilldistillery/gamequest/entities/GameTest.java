@@ -69,5 +69,19 @@ class GameTest {
 		assertNotNull(game.getGameImages());
 		assertTrue(game.getGameImages().size() == 3);
 	}
+	
+	@Test
+	void test_Game_has_list_of_platforms() {
+		assertNotNull(game);
+		assertNotNull(game.getGamePlatforms());
+		assertTrue(game.getGamePlatforms().size() == 2);
+	}
+	
+	@Test
+	void test_Game_has_list_of_genres() {
+		assertNotNull(game);
+		assertNotNull(game.getGenres());
+		assertTrue(game.getGenres().size() == 2);
+	}
 
 }
