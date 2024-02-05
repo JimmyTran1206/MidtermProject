@@ -87,7 +87,7 @@
 							</div>
 					</a>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">Profile</a></li>
+							<li><a class="dropdown-item" href="viewProfile.do">Profile</a></li>
 							<li><a class="dropdown-item" href="logout.do">Sign out</a></li>
 							<li><hr class="dropdown-divider"></li>
 							<li><a class="dropdown-item" href="#">Something else

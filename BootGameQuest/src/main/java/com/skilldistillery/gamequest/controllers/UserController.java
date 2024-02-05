@@ -1,5 +1,6 @@
 package com.skilldistillery.gamequest.controllers;
 
+import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -103,5 +104,49 @@ public class UserController {
 	public String registerSuccess() {
 		return "RegisterSuccess";
 	}
+	
+	// handle view profile for user and admin
+	@GetMapping(value="viewProfile.do")
+	public String showProfile(HttpSession session, Model model) {
+		User currentUser = (User) session.getAttribute("loggedIn");
+		model.addAttribute("user", currentUser);
+		if(currentUser.getRole().equals("admin")) {
+			return "ProfileAdmin";
+		}else {
+			return "ProfileUser";
+		}
+	}
+	
+	// handle view update profile (same for both user and admin)
+	@GetMapping(value="updateProfile.do")
+	public String updateProfile(HttpSession session, Model model) {
+		User currentUser = (User) session.getAttribute("loggedIn");
+		model.addAttribute("user", currentUser);
+		return "ProfileUpdate";
+	}
+	
+	// handle update confirm
+	@PostMapping(value="updateProfileConfirm.do")
+	public String updateProfileConfirmed(User user, HttpSession session) {
+		User updatedUser= userDAO.findUserById(userDAO.updateUserByInfo(user));
+		session.setAttribute("loggedIn", updatedUser);
+		return "redirect:viewProfile.do";
+	}
+	
+	// userSelfDeactivate.do
+	@GetMapping(value="userSelfDeactivate.do")
+	public String userSelfDeactivated() {
+		return "UserSelfDeactivatedWarning";
+	}
+	
+	// userSelfDeactivatedConfirmed.do
+	@GetMapping(value="userSelfDeactivateConfirmed.do")
+	public String userSelfDeactivatedConfirmed(HttpSession session) {
+		User currentUser = (User) session.getAttribute("loggedIn");
+		userDAO.deactivateUserById(currentUser.getId());
+		session.removeAttribute("loggedIn");
+		return "redirect:home.do";
+	}
+	
 
 }

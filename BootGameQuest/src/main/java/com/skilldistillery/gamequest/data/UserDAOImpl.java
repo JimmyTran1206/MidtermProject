@@ -45,17 +45,18 @@ public class UserDAOImpl implements UserDAO {
 		if (user == null) {
 			return null;
 		}
-		em.remove(user);
+		user.setEnabled(false);
 		em.flush();
 		return user;
 	}
 
 	@Override
-	public void updateUserById(int id, User u) {
-		User user = em.find(User.class, id);
-		user.setPassword(u.getPassword());
-		user.setUsername(u.getUsername());
-		user.setProfilePicture(u.getProfilePicture());
+	public int updateUserByInfo(User userNewInfo) {
+		User user = em.find(User.class, userNewInfo.getId());
+		user.setPassword(userNewInfo.getPassword());
+		user.setUsername(userNewInfo.getUsername());
+		user.setProfilePicture(userNewInfo.getProfilePicture());
+		return user.getId();
 	}
 
 	@Override

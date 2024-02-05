@@ -23,27 +23,46 @@
 	<main>
 		<div class="container">
 			<div class="row">
-				<div class="col-12 my-4">
-					<div class="text-center">
-						<h1>User Dashboard</h1>
-					</div>
-					<div class="text-center">
-						<h3>Welcome User Name</h3>
-					</div>
-					<div class="text-center my-4">
-						<h4>Insert Profile Picture</h4>
-					</div>
+				<div class="col-12 text-center my-4">
+					<h1>Admin's Profile</h1>
 				</div>
-				<div class="col-12 text-center">
-					<button type="button" class="btn btn-primary my-2 mx-2">Update
-						Profile</button>
-					<button type="button" class="btn btn-primary my-2 mx-2">Delete
-						Profile</button>
+			</div>
+
+			<div class="row">
+				<div class="col-12 text-center my-4">
+					<h2>Welcome to your personal dashboard</h2>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-12 text-center my-4">
+					<img src="${user.profilePicture}" width="512px" height="512px"
+						style="border-radius: 50%" alt="profile picture" />
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-2"></div>
+
+				<div class="col-8 text-center my-4">
+					<a href="updateProfile.do" class="btn btn-primary my-2 mx-2">
+						Update Profile </a>
+				</div>
+
+				<div class="col-2"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-12 text-center my-4">
+					<h3>You currently have XXX users in GameQuest</h3>
+					<form action="">
+						<button type="button" class="btn btn-primary my-2 mx-2">
+							View your user list</button>
+					</form>
 				</div>
 			</div>
 		</div>
 	</main>
-
 
 
 
