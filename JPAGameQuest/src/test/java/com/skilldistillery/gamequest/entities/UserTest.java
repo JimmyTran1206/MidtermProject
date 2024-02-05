@@ -46,7 +46,14 @@ class UserTest {
 	void test_User_has_username() {
 		assertNotNull(user);
 		assertNotNull(user.getUsername());
-		assertEquals("FIXME", user.getUsername());
+		assertEquals("admin", user.getUsername());
+	}
+	
+	@Test
+	void test_User_has_games_list() {
+		assertNotNull(user);
+		assertNotNull(user.getUserGames());
+		assertTrue(user.getUserGames().size() == 2);
 	}
 
 }
