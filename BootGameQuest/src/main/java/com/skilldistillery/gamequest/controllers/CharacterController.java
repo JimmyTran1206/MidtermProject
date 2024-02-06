@@ -21,6 +21,7 @@ public class CharacterController {
 	@Autowired
 	private CharacterDAO charDAO;
 	
+
 	@Autowired
 	private GameDAO gameDAO;
 	
@@ -28,6 +29,12 @@ public class CharacterController {
 //	public String CharacterDeails() {
 //		return "CharacterDetails";
 //	}
+
+	@GetMapping("CharacterDetails")
+	public String CharacterDetails() {
+		return "CharacterDetails";
+	}
+
 	
 	@GetMapping(path="getCharacter.do", params="charId")
 	public String getCharacterbyId(@RequestParam("charId") int charId, Model model) {
