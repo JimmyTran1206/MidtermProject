@@ -37,8 +37,8 @@ public class CharacterDAOImpl implements CharacterDAO {
 
 	@Override
 	public GameCharacter createGameChar(GameCharacter character) {
-		// TODO Auto-generated method stub
-		return null;
+		em.persist(character);
+		return character;
 	}
 	
 	

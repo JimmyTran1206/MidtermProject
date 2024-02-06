@@ -3,7 +3,6 @@ package com.skilldistillery.gamequest.entities;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
@@ -39,7 +39,7 @@ public class Game {
 	@Column(name = "user_id")
 	private int userId;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "company_id")
 	private Company company;
 
@@ -168,9 +168,6 @@ public class Game {
 	public void setGameUsers(List<User> gameUsers) {
 		this.gameUsers = gameUsers;
 	}
-
-	
-
 
 	public void addGenre(Genre genre) {
 		if (genres == null) {
