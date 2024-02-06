@@ -1,6 +1,5 @@
 package com.skilldistillery.gamequest.controllers;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.gamequest.data.UserDAO;
+import com.skilldistillery.gamequest.entities.Game;
 import com.skilldistillery.gamequest.entities.User;
 
 import jakarta.servlet.http.HttpSession;
@@ -25,7 +25,6 @@ public class UserController {
 //	public String home() {
 //		return "home";
 //	}
-	
 
 	@GetMapping(value = "login.do")
 	public String showLoginBlank() {
@@ -190,6 +189,7 @@ public class UserController {
 		model.addAttribute("userList", userList);
 		return "User/AdminSearchUserById";
 	}
+
 	// admin - search user by Name
 	@GetMapping(value = "adminSearchUserByName.do")
 	public String adminSearchUserByName(Model model, @RequestParam("searchName") String name) {
@@ -198,5 +198,22 @@ public class UserController {
 		model.addAttribute("userList", userList);
 		return "User/AdminSearchUserByName";
 	}
-	
+
+	// user - view user game list
+	@GetMapping(value = "viewUserGameList.do")
+	public String viewUserGameList(Model model, HttpSession session) {
+		User currentUser = (User) session.getAttribute("loggedIn");
+		List<Game> userGameList = userDAO.getGameListByUserId(currentUser.getId());
+		model.addAttribute("gameList", userGameList);
+		return "User/UserGameList";
+	}
+
+	// user - remove game from user list
+	@GetMapping(value = "removeGameFromUserList.do")
+	public String removeGameFromUserList(Model model, HttpSession session, @RequestParam("id") int gameId) {
+		User currentUser = (User) session.getAttribute("loggedIn");
+		userDAO.removeGameFromUserList(gameId, currentUser.getId());
+		return "redirect:viewUserGameList.do";
+	}
+
 }

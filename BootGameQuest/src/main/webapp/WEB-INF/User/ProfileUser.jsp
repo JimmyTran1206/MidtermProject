@@ -24,7 +24,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12 text-center my-4">
-					<h1>${user.username}'s Profile</h1>
+					<h1>${user.username}'sProfile</h1>
 				</div>
 			</div>
 
@@ -36,7 +36,7 @@
 
 			<div class="row">
 				<div class="col-12 text-center my-4">
-					<img src="${user.profilePicture}" width ="512px" height="512px"
+					<img src="${user.profilePicture}" width="512px" height="512px"
 						style="border-radius: 50%" alt="profile picture" />
 				</div>
 			</div>
@@ -46,13 +46,11 @@
 
 				<div class="col-4 text-center my-4">
 					<a href="updateProfile.do" class="btn btn-primary my-2 mx-2">
-							Update Profile
-					</a>
+						Update Profile </a>
 				</div>
 				<div class="col-4 text-center my-4">
 					<a href="userSelfDeactivate.do" class="btn btn-primary my-2 mx-2">
-							Deactivate account
-					</a>
+						Deactivate account </a>
 				</div>
 				<div class="col-2"></div>
 			</div>
@@ -67,12 +65,11 @@
 							Add a game to your list</button>
 					</form>
 				</div>
-				
+
 				<div class="col-12 text-center my-2">
-					<form action="">
-						<button type="button" class="btn btn-primary my-2 mx-2">
-							View your game list</button>
-					</form>
+					<a href="viewUserGameList.do" class="btn btn-primary my-2 mx-2">
+						View your game list </a>
+
 				</div>
 			</div>
 

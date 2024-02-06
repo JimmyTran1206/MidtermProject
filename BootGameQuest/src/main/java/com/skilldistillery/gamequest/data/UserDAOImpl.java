@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.gamequest.entities.Game;
 import com.skilldistillery.gamequest.entities.User;
 
 import jakarta.persistence.EntityManager;
@@ -118,6 +119,19 @@ public class UserDAOImpl implements UserDAO {
 		} catch (Exception e) {
 			return null;
 		}
+	}
+
+	@Override
+	public List<Game> getGameListByUserId(int id) {
+		return em.find(User.class, id).getUserGames();
+	}
+
+	@Override
+	public Game removeGameFromUserList(int gameId, int userId) {
+		Game game = em.find(Game.class, gameId);
+		User user = em.find(User.class, userId);
+		user.removeUserGame(game);
+		return game;
 	}
 
 }
