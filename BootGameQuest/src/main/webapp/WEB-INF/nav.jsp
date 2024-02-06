@@ -12,7 +12,7 @@
 
         <!-- Search form -->
         <div>
-            <form class="d-flex" action="searchById" method="GET">
+            <form class="d-flex" action="ShowGameDetails" method="GET">
                 <input class="form-control me-2" type="search" name="id" placeholder="Search by ID" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>

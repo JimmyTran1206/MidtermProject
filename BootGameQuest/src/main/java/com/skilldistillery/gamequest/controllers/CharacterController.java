@@ -16,7 +16,7 @@ public class CharacterController {
 	private CharacterDAO charDAO;
 	
 	@GetMapping("CharacterDetails")
-	public String CharacterDeails() {
+	public String CharacterDetails() {
 		return "CharacterDetails";
 	}
 	

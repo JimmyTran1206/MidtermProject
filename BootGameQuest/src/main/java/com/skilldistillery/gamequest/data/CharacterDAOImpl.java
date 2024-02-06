@@ -12,7 +12,7 @@ import jakarta.transaction.Transactional;
 
 @Transactional
 @Service
-public class CharacterImpl implements CharacterDAO {
+public class CharacterDAOImpl implements CharacterDAO {
 	
 	@PersistenceContext
 	private EntityManager em;

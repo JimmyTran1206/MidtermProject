@@ -15,10 +15,10 @@ public class SearchController {
 	@Autowired
 	private GameDAO gameDAO;
 
-	@GetMapping("/searchById")
+	@GetMapping("/ShowGameDetails")
 	public String searchGameById(@RequestParam("id") int id, Model model) {
 		Game game = gameDAO.searchGameById(id);
 		model.addAttribute("game", game);
-		return "User/SearchResults";
+		return "GameDetails";
 	}
 }
