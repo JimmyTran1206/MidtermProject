@@ -21,7 +21,7 @@
 		<p>${game.title}</p>
 	</c:forEach>
 
-	<form action="gerCharacter.do" method="GET">
+	<form action="getCharacter.do" method="GET">
 		Character ID: <input type="text" name="charId" /> <input type="submit"
 			value="Show Character" />
 

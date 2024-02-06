@@ -32,7 +32,14 @@ public class CharacterDAOImpl implements CharacterDAO {
 	@Override
 	public GameCharacter getCharacterById(int id) {
 		GameCharacter gameChar = em.find(GameCharacter.class, id);
-		return null;
+		return gameChar;
 	}
 
+	@Override
+	public GameCharacter createGameChar(GameCharacter character) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 }
