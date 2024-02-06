@@ -12,7 +12,7 @@ import jakarta.transaction.Transactional;
 
 @Transactional
 @Service
-public class CharacterImpl implements CharacterDAO {
+public class CharacterDAOImpl implements CharacterDAO {
 	
 	@PersistenceContext
 	private EntityManager em;
@@ -32,7 +32,14 @@ public class CharacterImpl implements CharacterDAO {
 	@Override
 	public GameCharacter getCharacterById(int id) {
 		GameCharacter gameChar = em.find(GameCharacter.class, id);
-		return null;
+		return gameChar;
 	}
 
+	@Override
+	public GameCharacter createGameChar(GameCharacter character) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 }

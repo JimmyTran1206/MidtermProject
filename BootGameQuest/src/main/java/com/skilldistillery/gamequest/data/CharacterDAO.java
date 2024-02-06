@@ -11,5 +11,7 @@ public interface CharacterDAO {
 	public List<GameCharacter> getCharactersByGameId();
 	
 	public GameCharacter getCharacterById(int id);
+	
+	public GameCharacter createGameChar(GameCharacter character);
 
 }
