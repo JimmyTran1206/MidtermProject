@@ -16,27 +16,27 @@
 		</div>
 		<div class="form-group">
 			<label for="name">Description:</label> <input type="text" id="description"
-				name="name" class="form-control" required>
+				name="description" class="form-control" required>
 		</div>
 		<div class="form-group">
 			<label for="name">AvatarUrl:</label> <input type="text" id="avatarUrl"
-				name="name" class="form-control" required>
+				name="avatarUrl" class="form-control" required>
 		</div>
 		<div class="form-group">
 			<label for="name">Game Id:</label> <input type="text" id="gameId"
-				name="name" class="form-control" required>
+				name="gameId" class="form-control" required>
 		</div>
 		<div class="form-group">
-			<label for="name">Character Images:</label> <input type="text" id="characterImgs"
-				name="name" class="form-control">
+			<label for="charImgs">Character Images:</label> <input type="text" id="characterImgs"
+				name="charImgs" class="form-control">
 		</div>
 		<div class="form-group">
-			<label for="name">Character Images:</label> <input type="text" id="characterImgs"
-				name="name" class="form-control">
+			<label for="charImgs">Character Images:</label> <input type="text" id="characterImgs"
+				name="charImgs" class="form-control">
 		</div>
 		<div class="form-group">
-			<label for="name">Character Images:</label> <input type="text" id="characterImgs"
-				name="name" class="form-control">
+			<label for="charImgs">Character Images:</label> <input type="text" id="characterImgs"
+				name="charImgs" class="form-control">
 		</div>	
 		<button type="submit" class="btn btn-success btn-block">Add
 			Character</button>
