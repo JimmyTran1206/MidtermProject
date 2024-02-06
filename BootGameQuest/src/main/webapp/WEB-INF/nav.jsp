@@ -48,7 +48,7 @@
 					test="${!empty loggedIn && loggedIn.role=='user' && loggedIn.enabled==true}">
 					<!-- Link user game list -->
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="">Your game list</a></li>
+						aria-current="page" href="viewUserGameList.do">Your game list</a></li>
 					<!-- Link user game list -->
 
 
