@@ -13,7 +13,7 @@ import jakarta.transaction.Transactional;
 @Transactional
 @Service
 public class GameDAOImpl implements GameDAO {
-	
+
 	@PersistenceContext
 	private EntityManager em;
 
@@ -23,7 +23,10 @@ public class GameDAOImpl implements GameDAO {
 		List<Game> games = em.createQuery(jpql, Game.class).getResultList();
 		return games;
 	}
-	
-	
+
+	@Override
+	public Game searchGameById(int id) {
+		return em.find(Game.class, id);
+	}
 
 }

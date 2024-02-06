@@ -1,5 +1,6 @@
 package com.skilldistillery.gamequest.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -7,7 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Company {
@@ -21,8 +22,8 @@ public class Company {
 	@Column(name="company_url")
 	private String companyUrl;
 	
-	@OneToOne(mappedBy="company")
-	private Game game;
+	@OneToMany(mappedBy="company")
+	private List<Game> games;
 	
 	public Company() {
 		
@@ -50,6 +51,15 @@ public class Company {
 
 	public void setCompanyUrl(String companyUrl) {
 		this.companyUrl = companyUrl;
+	}
+	
+
+	public List<Game> getGames() {
+		return games;
+	}
+
+	public void setGames(List<Game> games) {
+		this.games = games;
 	}
 
 	@Override

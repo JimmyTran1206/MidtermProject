@@ -25,6 +25,7 @@ public interface UserDAO {
 	public List<User> getUsersByUsername(String username);
 
 	public List<User> getUsersByid(int id);
+	
 
 	public List<Game> getGameListByUserId(int id);
 	

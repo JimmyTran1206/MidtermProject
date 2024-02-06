@@ -212,7 +212,7 @@ public class UserController {
 	@GetMapping(value = "removeGameFromUserList.do")
 	public String removeGameFromUserList(Model model, HttpSession session, @RequestParam("id") int gameId) {
 		User currentUser = (User) session.getAttribute("loggedIn");
-		userDAO.removeGameFromUserList(gameId,currentUser.getId());
+		userDAO.removeGameFromUserList(gameId, currentUser.getId());
 		return "redirect:viewUserGameList.do";
 	}
 

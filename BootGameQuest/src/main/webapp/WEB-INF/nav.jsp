@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="jakarta.tags.core" prefix="c"%>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -14,15 +13,13 @@
 
 
 		<!-- Search form -->
-		<div>
-			<form class="d-flex" role="search">
-				<input class="form-control me-2" type="search" placeholder="Search"
-					aria-label="Search">
-				<button class="btn btn-outline-success" type="submit">Search</button>
-			</form>
-		</div>
-
-		<!-- Search form -->
+        <div>
+            <form class="d-flex" action="ShowGameDetails" method="GET">
+                <input class="form-control me-2" type="search" name="id" placeholder="Search by ID" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+        <!-- Search form -->
 
 
 		<!-- Nav content menu -->
@@ -59,7 +56,7 @@
 
 					<!-- Link view all users -->
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="">View all users</a></li>
+						aria-current="page" href="viewAllUsers.do">View all users</a></li>
 					<!-- Link view all users -->
 
 				</c:if>
@@ -111,5 +108,5 @@
 		</button>
 		<!-- Hamburger button -->
 	</div>
-</nav>
 
+</nav>
