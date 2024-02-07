@@ -28,7 +28,7 @@
 
 				<!-- Link View top 10 -->
 				<li class="nav-item"><a class="nav-link active"
-					aria-current="page" href="#">View top 10 games</a></li>
+					aria-current="page" href="#">View all games</a></li>
 				<!-- Link View top 10 -->
 
 				<!--BEGIN: LOGIN LOGIC -->
@@ -45,7 +45,7 @@
 					test="${!empty loggedIn && loggedIn.role=='user' && loggedIn.enabled==true}">
 					<!-- Link user game list -->
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="viewUserGameList.do">Your game list</a></li>
+						aria-current="page" href="viewUserGameList.do">My game list</a></li>
 					<!-- Link user game list -->
 
 

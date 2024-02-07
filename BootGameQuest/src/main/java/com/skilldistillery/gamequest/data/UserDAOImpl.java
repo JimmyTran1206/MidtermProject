@@ -1,10 +1,12 @@
 package com.skilldistillery.gamequest.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.gamequest.entities.Game;
+import com.skilldistillery.gamequest.entities.GameImage;
 import com.skilldistillery.gamequest.entities.User;
 
 import jakarta.persistence.EntityManager;
@@ -52,7 +54,7 @@ public class UserDAOImpl implements UserDAO {
 		em.flush();
 		return user;
 	}
-	
+
 	@Override
 	public User activateUserById(int id) {
 		User user = em.find(User.class, id);
@@ -63,7 +65,6 @@ public class UserDAOImpl implements UserDAO {
 		em.flush();
 		return user;
 	}
-
 
 	@Override
 	public int updateUserByInfo(User userNewInfo) {
@@ -78,12 +79,11 @@ public class UserDAOImpl implements UserDAO {
 	public User findUserByUsername(String username) {
 		try {
 			String query = "SELECT u FROM User u WHERE u.username= :username";
-			User u = em.createQuery(query, User.class).setParameter("username", username)
-					.getSingleResult();
+			User u = em.createQuery(query, User.class).setParameter("username", username).getSingleResult();
 			return u;
 		} catch (Exception e) {
 			return null;
-		}		
+		}
 	}
 
 	@Override
@@ -101,7 +101,7 @@ public class UserDAOImpl implements UserDAO {
 	public List<User> getUsersByUsername(String username) {
 		try {
 			String query = "SELECT u FROM User u WHERE u.username LIKE :name AND u.id>1";
-			List<User> userList = em.createQuery(query, User.class).setParameter("name", "%" + username +"%")
+			List<User> userList = em.createQuery(query, User.class).setParameter("name", "%" + username + "%")
 					.getResultList();
 			return userList;
 		} catch (Exception e) {
@@ -113,8 +113,7 @@ public class UserDAOImpl implements UserDAO {
 	public List<User> getUsersByid(int id) {
 		try {
 			String query = "SELECT u FROM User u WHERE u.id=:userId";
-			List<User> userList = em.createQuery(query, User.class).setParameter("userId", id)
-					.getResultList();
+			List<User> userList = em.createQuery(query, User.class).setParameter("userId", id).getResultList();
 			return userList;
 		} catch (Exception e) {
 			return null;
@@ -122,8 +121,8 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public List<Game> getGameListByUserId(int id) {
-		return em.find(User.class, id).getUserGames();
+	public List<Game> getGameListByUserId(int userId) {
+		return em.find(User.class, userId).getUserGames();
 	}
 
 	@Override
@@ -132,6 +131,33 @@ public class UserDAOImpl implements UserDAO {
 		User user = em.find(User.class, userId);
 		user.removeUserGame(game);
 		return game;
+	}
+
+	@Override
+	public List<Game> getGameListByUserInputTitle(String gameTitle) {
+		String query = "SELECT game FROM Game game WHERE game.title LIKE :gameTitle";
+		List<Game> gameList = em.createQuery(query, Game.class).setParameter("gameTitle", "%" + gameTitle + "%")
+				.getResultList();
+		return gameList;
+	}
+
+	@Override
+	public int userAddNewGame(int userId, Game game, String[] screenshots) {
+		game.setUserId(userId);
+		em.persist(game);
+		em.flush();
+		Game newGame= em.find(Game.class, game.getId());
+		
+		for (int i=0; i<screenshots.length;i++) {
+			GameImage screenshot=new GameImage();
+			screenshot.setImageUrl(screenshots[i]);
+			screenshot.setGame(newGame);
+			em.persist(screenshot);
+		}
+
+		User user= em.find(User.class, userId);
+		user.addUserGame(game);
+		return game.getId();
 	}
 
 }
