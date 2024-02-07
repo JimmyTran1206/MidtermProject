@@ -15,49 +15,7 @@
             background-attachment: fixed;
             background-position: center;
             color: #fff; /* Text color */
-        }
-
-        .card {
-            border: none;
-            transition: transform 0.3s;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card img {
-            height: 200px;
-            object-fit: cover;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-            color: #fff;
-        }
-
-        .card-text {
-            color: #f8f9fa; /* Light gray text color */
-        }
-
-        .btn-primary {
-            background-color: #dc3545;
-            border: none;
-        }
-
-        .btn-primary:hover {
-            background-color: #c82333;
-        }
-
-        /* Custom class for the smaller character ID input */
-        .small-input {
-            width: 150px; /* Adjust the width as needed */
-        }
+      
     </style>
 </head>
 <body>
@@ -65,42 +23,32 @@
         <jsp:include page="nav.jsp" />
     </header>
 
-    <div class="container my-5">
-        <h1 class="text-center mb-5">Featured Games</h1>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <c:forEach items="${games}" var="game">
-                <div class="col">
-                    <div class="card h-100 shadow">
-                        <img src="${game.trailerUrl}" class="card-img-top" alt="${game.title}">
-                        <div class="card-body">
-                            <h5 class="card-title">${game.title}</h5>
-                            <p class="card-text">${game.description}</p>
-                            <a href="#" class="btn btn-primary btn-block">View Details</a>
-                        </div>
-                    </div>
-                </div>
-            </c:forEach>
-        </div>
-    </div>
+<!-- Carousel -->
 
-    <form action="gerCharacter.do" method="GET" class="text-center my-5">
-        <div class="row justify-content-center"> <!-- Center the row -->
-            <div class="col-auto"> <!-- Use auto layout for centering -->
-                <label for="charId" style="color: #fff;">Character ID:</label>
-            </div>
-        </div>
-        <div class="row justify-content-center"> <!-- Center the row -->
-            <div class="col-auto"> <!-- Use auto layout for centering -->
-                <!-- Adding the small-input class to make the input field smaller -->
-                <input type="text" name="charId" id="charId" class="form-control mb-3 small-input">
-            </div>
-        </div>
-        <div class="row justify-content-center"> <!-- Center the row -->
-            <div class="col-auto"> <!-- Use auto layout for centering -->
-                <input type="submit" value="Show Character" class="btn btn-primary">
-            </div>
-        </div>
-    </form>
+<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="2000">
+      <img src="https://wallpapers.com/images/hd/minecraft-background-cfljc4haleghnajo.jpg" class="d-block w-100" alt="Minecraft">
+    </div>
+    <div class="carousel-item" data-bs-interval="2000">
+      <img src="https://external-preview.redd.it/KuFlan1EiSzWIb_X_GvL23PK9zBZK7GGJV6XDRCEQlQ.jpg?auto=webp&s=d9399f3fffa4a4c8707371b9f84d3f085a013c98" class="d-block w-100" alt="WoWarcraft">
+    </div>
+    <div class="carousel-item">
+      <img src="https://w0.peakpx.com/wallpaper/948/534/HD-wallpaper-mortal-kombat-cool.jpg" class="d-block w-100" alt="Mortal Kombat">
+    </div>
+    
+    
+    
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
