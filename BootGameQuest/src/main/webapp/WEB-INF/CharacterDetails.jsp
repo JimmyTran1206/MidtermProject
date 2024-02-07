@@ -34,8 +34,10 @@
 					<button type="submit" class="btn btn-primary my-2">Add New
 						Character</button>
 				</form>
-				<button type="button" class="btn btn-primary my-2">Updated
+				<form action="updateCharacter" method="GET">
+				<button type="submit" name="charId" value="${character.id}" class="btn btn-primary my-2">Update
 					This Character</button>
+				</form>
 				<button type="button" class="btn btn-primary my-2">Delete
 					This Character</button>
 			</div>

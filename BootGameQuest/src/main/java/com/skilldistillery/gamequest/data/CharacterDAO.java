@@ -14,4 +14,8 @@ public interface CharacterDAO {
 	
 	public GameCharacter createGameChar(GameCharacter character);
 
+	public String deleteCharacter(int characterId);
+
+	public GameCharacter updateCharacter(int charId, GameCharacter character);
+
 }
