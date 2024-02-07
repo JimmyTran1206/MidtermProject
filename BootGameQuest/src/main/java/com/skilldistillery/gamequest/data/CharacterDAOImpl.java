@@ -19,13 +19,13 @@ public class CharacterDAOImpl implements CharacterDAO {
 
 	@Override
 	public List<GameCharacter> getAllCharacters() {
-		// TODO Auto-generated method stub
-		return null;
+		String jpql = "SELECT character FROM GameCharacter character";
+		List<GameCharacter> characters = em.createQuery(jpql, GameCharacter.class).getResultList();
+		return characters;
 	}
 
 	@Override
 	public List<GameCharacter> getCharactersByGameId() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -39,6 +39,28 @@ public class CharacterDAOImpl implements CharacterDAO {
 	public GameCharacter createGameChar(GameCharacter character) {
 		em.persist(character);
 		return character;
+	}
+
+	@Override
+	public String deleteCharacter(int characterId) {
+		
+		GameCharacter foundCharacter = em.find(GameCharacter.class, characterId);
+		
+		em.remove(foundCharacter);
+		em.flush();
+		return "Character Deleted";
+	}
+
+	@Override
+	public GameCharacter updateCharacter(int charId, GameCharacter character) {
+		GameCharacter updateCharacter = em.find(GameCharacter.class, charId);
+		if(updateCharacter != null) {
+			updateCharacter.setName(character.getName());
+			updateCharacter.setDescription(character.getDescription());
+			updateCharacter.setAvatarUrl(character.getAvatarUrl());
+			updateCharacter.setGameId(character.getGameId());	
+		}
+		return updateCharacter;
 	}
 	
 	
