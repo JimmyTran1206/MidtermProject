@@ -7,14 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Featured Games</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <style>
+     <style>
         body {
-            background-color: #000; /* Black background */
-            color: #fff; /* Text color */
+            background-color: #8d99ae;
+            color: #2b2d42; /* Text color */
         }
         #carouselExampleInterval {
-            width: 60%; 
-            margin: auto; 
+            width: 60%;
+            margin: auto;
+        }
+        .game-card {
+            margin-bottom: 20px;
+        }
+        .first-card {
+            margin-top: 20px;
+        }
+        .last-card {
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -51,8 +60,112 @@
     </div>
 
     <!-- Main Container -->
-    <div class="container">
-        <h1 class="text-center p-5 mb-5 mt-5"> Top 10 games</h1>
+    <div class="container mt-5">
+        <h1 class="text-center p-5 mb-5 mt-5">Top 10 games</h1>
+        <div class="row">
+            <!-- Game cards start here -->
+            <div class="col-md-2">
+                <!-- Game card 1 -->
+                <div class="card game-card">
+                    <img src="https://wallpapers.com/images/hd/minecraft-background-cfljc4haleghnajo.jpg" class="card-img-top" alt="Minecraft">
+                    <div class="card-body">
+                        <h5 class="card-title">Game 1</h5>
+                        <p class="card-text">Description of Game 1.</p>
+                        <!-- Add any additional information or buttons here -->
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat the above card structure for up to 10 games -->
+            <!-- Example for Game card 2 -->
+            <div class="col-md-2">
+                <div class="card game-card">
+                    <img src="https://wallpapercosmos.com/w/full/a/a/9/358-1920x1080-desktop-full-hd-world-of-warcraft-background-photo.jpg" class="card-img-top" alt="WoWarcraft">
+                    <div class="card-body">
+                        <h5 class="card-title">Game 2</h5>
+                        <p class="card-text">Description of Game 2.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat the above card structure for up to 10 games -->
+             <div class="col-md-2">
+                <div class="card game-card">
+                    <img src="https://wallpapercosmos.com/w/full/a/a/9/358-1920x1080-desktop-full-hd-world-of-warcraft-background-photo.jpg" class="card-img-top" alt="WoWarcraft">
+                    <div class="card-body">
+                        <h5 class="card-title">Game 3</h5>
+                        <p class="card-text">Description of Game 3.</p>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-2">
+                <div class="card game-card">
+                    <img src="https://wallpapercosmos.com/w/full/a/a/9/358-1920x1080-desktop-full-hd-world-of-warcraft-background-photo.jpg" class="card-img-top" alt="WoWarcraft">
+                    <div class="card-body">
+                        <h5 class="card-title">Game 4</h5>
+                        <p class="card-text">Description of Game 4.</p>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-2">
+                <div class="card game-card">
+                    <img src="https://wallpapercosmos.com/w/full/a/a/9/358-1920x1080-desktop-full-hd-world-of-warcraft-background-photo.jpg" class="card-img-top" alt="WoWarcraft">
+                    <div class="card-body">
+                        <h5 class="card-title">Game 5</h5>
+                        <p class="card-text">Description of Game 5.</p>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-2">
+                <div class="card game-card">
+                    <img src="https://wallpapercosmos.com/w/full/a/a/9/358-1920x1080-desktop-full-hd-world-of-warcraft-background-photo.jpg" class="card-img-top" alt="WoWarcraft">
+                    <div class="card-body">
+                        <h5 class="card-title">Game 6</h5>
+                        <p class="card-text">Description of Game 6.</p>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-2">
+                <div class="card game-card">
+                    <img src="https://wallpapercosmos.com/w/full/a/a/9/358-1920x1080-desktop-full-hd-world-of-warcraft-background-photo.jpg" class="card-img-top" alt="WoWarcraft">
+                    <div class="card-body">
+                        <h5 class="card-title">Game 7</h5>
+                        <p class="card-text">Description of Game 7.</p>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-2">
+                <div class="card game-card">
+                    <img src="https://wallpapercosmos.com/w/full/a/a/9/358-1920x1080-desktop-full-hd-world-of-warcraft-background-photo.jpg" class="card-img-top" alt="WoWarcraft">
+                    <div class="card-body">
+                        <h5 class="card-title">Game 8</h5>
+                        <p class="card-text">Description of Game 8.</p>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-2">
+                <div class="card game-card">
+                    <img src="https://wallpapercosmos.com/w/full/a/a/9/358-1920x1080-desktop-full-hd-world-of-warcraft-background-photo.jpg" class="card-img-top" alt="WoWarcraft">
+                    <div class="card-body">
+                        <h5 class="card-title">Game 9</h5>
+                        <p class="card-text">Description of Game 9.</p>
+                    </div>
+                </div>
+            </div>
+             <div class="col-md-2">
+                <div class="card game-card">
+                    <img src="https://wallpapercosmos.com/w/full/a/a/9/358-1920x1080-desktop-full-hd-world-of-warcraft-background-photo.jpg" class="card-img-top" alt="WoWarcraft">
+                    <div class="card-body">
+                        <h5 class="card-title">Game 10</h5>
+                        <p class="card-text">Description of Game 10.</p>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+            
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
