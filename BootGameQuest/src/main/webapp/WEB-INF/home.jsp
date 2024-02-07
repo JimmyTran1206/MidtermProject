@@ -23,6 +23,9 @@
         <jsp:include page="nav.jsp" />
     </header>
 
+	<form action="getCharacter.do" method="GET">
+		Character ID: <input type="text" name="charId"/> <input type="submit"
+			value="Show Character"/>
 <!-- Carousel -->
 
 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
