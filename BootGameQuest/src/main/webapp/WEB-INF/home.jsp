@@ -22,8 +22,8 @@
 	</c:forEach>
 
 	<form action="getCharacter.do" method="GET">
-		Character ID: <input type="text" name="charId" /> <input type="submit"
-			value="Show Character" />
+		Character ID: <input type="text" name="charId"/> <input type="submit"
+			value="Show Character"/>
 
 
 		<script
