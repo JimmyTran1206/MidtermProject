@@ -61,6 +61,28 @@ public class Game {
 	@ManyToMany(mappedBy = "userGames")
 	private List<User> gameUsers;
 
+	//add -remove GameImage
+	public void addGameImage(GameImage gameImage) {
+		if (gameImages==null) {
+			gameImages=new ArrayList<>();
+		}
+		if(!gameImages.contains(gameImage)) {
+			gameImages.add(gameImage);
+			if(gameImage.getGame()!=null) {
+				gameImage.getGame().removeGameImage(gameImage);
+			}
+			gameImage.setGame(this);
+		}
+	}
+	
+	public void removeGameImage(GameImage gameImage) {
+		if(gameImages!=null && gameImages.contains(gameImage)) {
+			gameImages.remove(gameImage);
+			gameImage.setGame(null);
+		}
+	}
+	//---finish adding new stuffs--
+	
 	public Game() {
 
 	}
