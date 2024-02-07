@@ -59,19 +59,57 @@
 				<div class="col-12 text-center my-4">
 					<h3>You currently have XXX games in your list</h3>
 				</div>
-				<div class="col-12 text-center my-2">
-					<form action="">
-						<button type="button" class="btn btn-primary my-2 mx-2">
-							Add a game to your list</button>
-					</form>
+			</div>
+			<div class="row">
+				<div class="col-3"></div>
+				<div class="col-6 text-center my-4">
+					<section>
+						<div class="accordion" id="accordionAddNewGame">
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="headingTwo">
+									<button class="accordion-button collapsed" type="button"
+										data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+										aria-expanded="false" aria-controls="collapseTwo">
+										Add a game to your list</button>
+								</h2>
+								<div id="collapseTwo" class="accordion-collapse collapse"
+									aria-labelledby="headingTwo"
+									data-bs-parent="#accordionAddNewGame">
+									<div class="accordion-body">
+										<div class="container form-containter">
+											<form action="userAddGame.do" method="GET">
+												<div class="row text-center">
+													<div class="col-3">
+														<label for="game-title" class="form-label">Game
+															Title</label>
+													</div>
+													<div class="col-6">
+														<input type="text" min="2" class="form-control"
+															id="game-title" name="gameTitle" required />
+													</div>
+													<div class="col-3">
+														<button type="submit" class="btn btn-primary">
+															Add game</button>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
 				</div>
-
+				<div class="col-3"></div>
+			</div>
+			<div class="row">
 				<div class="col-12 text-center my-2">
 					<a href="viewUserGameList.do" class="btn btn-primary my-2 mx-2">
-						View your game list </a>
+						View my game list </a>
 
 				</div>
 			</div>
+		</div>
 
 		</div>
 	</main>

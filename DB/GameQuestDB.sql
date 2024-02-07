@@ -69,9 +69,9 @@ CREATE TABLE IF NOT EXISTS `game` (
   `release_date` DATE NULL,
   `avatar_url` VARCHAR(1000) NULL,
   `trailer_url` VARCHAR(1000) NULL,
-  `user_id` INT NOT NULL,
-  `company_id` INT NOT NULL,
-  `age_rating_id` INT NOT NULL,
+  `user_id` INT NULL,
+  `company_id` INT NULL,
+  `age_rating_id` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_game_user1_idx` (`user_id` ASC),
   INDEX `fk_game_company1_idx` (`company_id` ASC),
@@ -317,7 +317,10 @@ START TRANSACTION;
 USE `GameQuestDB`;
 INSERT INTO `genre` (`id`, `name`) VALUES (1, 'Action RPG');
 INSERT INTO `genre` (`id`, `name`) VALUES (2, 'Racing');
-INSERT INTO `genre` (`id`, `name`) VALUES (3, 'RTS');
+INSERT INTO `genre` (`id`, `name`) VALUES (3, 'Fighting');
+INSERT INTO `genre` (`id`, `name`) VALUES (4, 'Simulation');
+INSERT INTO `genre` (`id`, `name`) VALUES (5, 'Puzzle');
+INSERT INTO `genre` (`id`, `name`) VALUES (6, 'Real-time strategy');
 
 COMMIT;
 
@@ -329,6 +332,9 @@ START TRANSACTION;
 USE `GameQuestDB`;
 INSERT INTO `platform` (`id`, `name`, `platform_url`) VALUES (1, 'PC', NULL);
 INSERT INTO `platform` (`id`, `name`, `platform_url`) VALUES (2, 'X-box', NULL);
+INSERT INTO `platform` (`id`, `name`, `platform_url`) VALUES (3, 'Play Station', NULL);
+INSERT INTO `platform` (`id`, `name`, `platform_url`) VALUES (4, 'Nitendo Switch', NULL);
+INSERT INTO `platform` (`id`, `name`, `platform_url`) VALUES (5, 'Steam Deck Console', NULL);
 
 COMMIT;
 

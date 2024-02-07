@@ -1,5 +1,6 @@
 package com.skilldistillery.gamequest.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.gamequest.data.UserDAO;
 import com.skilldistillery.gamequest.entities.Game;
+import com.skilldistillery.gamequest.entities.GameImage;
 import com.skilldistillery.gamequest.entities.User;
 
 import jakarta.servlet.http.HttpSession;
@@ -216,4 +218,35 @@ public class UserController {
 		return "redirect:viewUserGameList.do";
 	}
 
+	// user - add a new game by inputing title
+	@GetMapping(value = "userAddGame.do")
+	public String userAddGame(Model model, @RequestParam("gameTitle") String gameTitle) {
+		List <Game> gameList = userDAO.getGameListByUserInputTitle(gameTitle);
+		if (gameList.isEmpty()) {
+			model.addAttribute("title",gameTitle);
+			return "User/UserAddGameForm";
+		}else {
+			model.addAttribute("gameTitle", gameTitle);
+			model.addAttribute("gameList", gameList);
+			return "User/UserGameListByInputTitle";
+		}
+	}
+	
+	// user- proceed to add game from the returned game list with input title
+	@GetMapping(value = "viewUserAddGameForm.do")
+	public String viewUserAddGameForm(Model model, @RequestParam("title") String title) {
+		model.addAttribute("title",title);
+		return "User/UserAddGameForm";
+	}
+	
+	// user- confirm adding new game userAddGameConfirm.do
+	@PostMapping(value = "userAddGameConfirm.do")
+	public String userAddGameConfirm(HttpSession session, Game game, @RequestParam(value="screenshots[]") String[] screenshots ) {
+		User currentUser = (User) session.getAttribute("loggedIn");
+		
+		userDAO.userAddNewGame(currentUser.getId(), game, screenshots);
+		return "redirect:viewUserGameList.do";
+	}
+	
+	//------------- END of UserController file ----------------\\
 }
