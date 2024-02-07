@@ -66,8 +66,8 @@ public class CharacterController {
 		return "GameCharacterForm";
 	}
 
-	@RequestMapping(path = { "deleteCharacter.do" }, params = "characterId")
-	public String deleteCharacter(Model model, @RequestParam("characterId") int characterId) {
+	@RequestMapping(path = { "deleteCharacter.do" }, params = "charId")
+	public String deleteCharacter(Model model, @RequestParam("charId") int characterId) {
 		GameCharacter characterToDelete = charDAO.getCharacterById(characterId);
 		String charToDelete = charDAO.deleteCharacter(characterId);
 		return "CharacterDeletion";

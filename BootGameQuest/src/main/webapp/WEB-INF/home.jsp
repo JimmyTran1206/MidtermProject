@@ -39,9 +39,7 @@
     <div class="carousel-item">
       <img src="https://w0.peakpx.com/wallpaper/948/534/HD-wallpaper-mortal-kombat-cool.jpg" class="d-block w-100" alt="Mortal Kombat">
     </div>
-    
-    
-    
+     
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

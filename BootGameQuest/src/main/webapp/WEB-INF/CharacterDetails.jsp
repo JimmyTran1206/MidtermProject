@@ -38,8 +38,10 @@
 				<button type="submit" name="charId" value="${character.id}" class="btn btn-primary my-2">Update
 					This Character</button>
 				</form>
-				<button type="button" class="btn btn-primary my-2">Delete
+				<form action="deleteCharacter.do" method="GET">
+				<button value="${character.id}" name="charId" type="submit" class="btn btn-primary my-2">Delete
 					This Character</button>
+				</form>
 			</div>
 			<div class="col-8 text-center">
 				<div>
