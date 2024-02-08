@@ -34,6 +34,19 @@ public interface UserDAO {
 	public List<Game> getGameListByUserInputTitle(String gameTitle);
 	
 	public int userAddNewGame(int userId, Game game, String[] screenshots);
+	
+	public Game getGameById(int gameId);
+	
+	public User findUserByIdJoinFetchGameList(int id);
+	
+	public Game addGametoUserList(int gameId, int userId);
+	
+	public List<GameImage> getGameScreenshotList(int gameId);
+
+	public int userModifyGameFields(Game game);
+	
+	public int userModifyGameScreenShots(int gameId, String [] screenshots);
+
 
 
 }

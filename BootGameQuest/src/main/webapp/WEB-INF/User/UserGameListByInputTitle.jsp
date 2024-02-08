@@ -118,11 +118,11 @@
 									<h5>${game.title}</h5>
 								</div>
 								<div>
-									<a href=""><img src="${game.avatarUrl}" alt="" width="100%"
+									<a href="viewGameDetails.do?id=${game.id}"><img src="${game.avatarUrl}" alt="" width="100%"
 										height="200px" style="display: inline-block" /></a>
 								</div>
 								<div>
-									<a href="" class="btn btn-primary my-2 mx-2">View Details</a>
+									<a href="viewGameDetails.do?id=${game.id}" class="btn btn-primary my-2 mx-2">View Details</a>
 								</div>
 							</section>
 						</c:forEach>

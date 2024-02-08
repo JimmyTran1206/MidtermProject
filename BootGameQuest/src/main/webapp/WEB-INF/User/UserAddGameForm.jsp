@@ -94,7 +94,7 @@
               </div>
 
               <div>
-                <label class="form-label">Desription</label>
+                <label class="form-label">Description</label>
 
                 <textarea
                   class="form-control"
