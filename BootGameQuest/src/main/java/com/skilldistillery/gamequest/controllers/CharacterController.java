@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skilldistillery.gamequest.data.CharacterDAO;
 import com.skilldistillery.gamequest.data.GameDAO;
+import com.skilldistillery.gamequest.entities.Game;
 import com.skilldistillery.gamequest.entities.GameCharacter;
 import com.skilldistillery.gamequest.entities.GameCharacterImage;
 
@@ -34,7 +35,9 @@ public class CharacterController {
 	public String getCharacterbyId(@RequestParam("charId") int charId, Model model) {
 		GameCharacter gameChar = charDAO.getCharacterById(charId);
 		List<GameCharacterImage> charImages = gameChar.getCharImages();
-
+		Game charGame = gameDAO.searchGameById(gameChar.getGameId());
+		
+		model.addAttribute("game", charGame);
 		model.addAttribute("character", gameChar);
 		model.addAttribute("characterImgs", charImages);
 
@@ -80,6 +83,13 @@ public class CharacterController {
 		model.addAttribute("charId", charId);
 		model.addAttribute("character", updatedCharacter);
 		return "CharacterDetails";
+	}
+	
+	@GetMapping("getAllCharacters")
+	public String getAllCharacters(Model model) {
+		List<GameCharacter> gameCharacters = charDAO.getAllCharacters();
+		model.addAttribute("characterList", gameCharacters);
+		return "GameCharacterList";
 	}
 
 }
