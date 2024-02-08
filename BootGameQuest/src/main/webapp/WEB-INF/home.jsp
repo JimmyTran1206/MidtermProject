@@ -13,6 +13,13 @@
 	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
 	crossorigin="anonymous">
 <style>
+#navbar {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1000; /* Ensure it's above other content */
+}
+
 body {
 	background-color: #8d99ae;
 	color: #2b2d42; /* Text color */
@@ -27,16 +34,34 @@ body {
 	border: 5px solid #2b2d42;
 }
 
-.game-card {
+/* Offcanvas Styles */
+.offcanvas-header {
+	background-color: #6094c3; /* Header background color */
+	color: #153d62 /* Header text color */
+}
+
+.offcanvas-body {
+	background-color: #9fc5e8; /* Body background color */
+	color: #153d62; /* Body text color */
+}
+
+/* Card Styles */
+.card {
 	margin-bottom: 20px;
 }
 
-.first-card {
-	margin-top: 20px;
+.card-title {
+	font-weight: bold;
+	margin-top: 10px;
 }
 
-.last-card {
-	margin-bottom: 20px;
+.card-description {
+	color: #666;
+}
+
+.card iframe {
+	width: 100%;
+	height: 400px;
 }
 </style>
 </head>
@@ -44,23 +69,28 @@ body {
 
 	<header>
 		<jsp:include page="nav.jsp" />
-		<!-- Backdrop Button -->
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-12 text-left mt-3">
-					<button class="btn btn-primary" type="button"
-						data-bs-toggle="offcanvas"
-						data-bs-target="#offcanvasWithBothOptions"
-						aria-controls="offcanvasWithBothOptions">List of Games</button>
-				</div>
-			</div>
-		</div>
 	</header>
 
+	<!-- Backdrop Button -->
+	<div class="container-fluid"
+		style="position: fixed; top: calc(50px + 0.1cm);">
+		<div class="row">
+			<div class="col-md-12 text-left mt-3">
+				<button class="btn btn-primary" type="button"
+					data-bs-toggle="offcanvas"
+					data-bs-target="#offcanvasWithBothOptions"
+					aria-controls="offcanvasWithBothOptions"
+					style="background-color: #153d62;">List of Games</button>
+			</div>
+		</div>
+	</div>
+
 	<!-- Carousel -->
-	<div class="mt-5">
+	<div class="mt-5" style="margin-top: 5rem !important;">
+		<!-- Adjust margin-top value as needed -->
 		<div id="carouselExampleInterval" class="carousel slide"
 			data-bs-ride="carousel">
+			<!-- Carousel items -->
 			<div class="carousel-inner">
 				<div class="carousel-item active" data-bs-interval="5000">
 					<img
@@ -83,6 +113,7 @@ body {
 						class="d-block w-100" alt="CoDuty">
 				</div>
 			</div>
+			<!-- Carousel navigation buttons -->
 			<button class="carousel-control-prev" type="button"
 				data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
 				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -94,153 +125,226 @@ body {
 				<span class="visually-hidden">Next</span>
 			</button>
 		</div>
+	</div>
 
-		<!-- Main Container -->
-		<div class="container mt-5">
-			<h1 class="text-center p-5 mb-5 mt-5">Top 10 games</h1>
-			<div class="row">
-				<!-- Game cards start here -->
-				<div class="col-md-2">
-					<!-- Game card 1 -->
-					<div class="card game-card">
-						<img
-							src="https://wallpapers.com/images/hd/minecraft-background-cfljc4haleghnajo.jpg"
-							class="card-img-top" alt="Minecraft">
-						<div class="card-body">
-							<h5 class="card-title">Game 1</h5>
-							<p class="card-text">Description of Game 1.</p>
-							<!-- Add any additional information or buttons here -->
+	<!-- Main Container -->
+	<div class="container mt-5">
+		<h1 class="text-center p-5 mb-5 mt-5">Top 10 games</h1>
+		<div class="row">
+			<!-- Cards Section -->
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div id="trailerCarousel" class="carousel slide"
+							data-bs-ride="carousel">
+							<div class="carousel-inner">
+								<div class="carousel-item active">
+									<div class="row">
+										<!-- Cards 1, 2, and 3 -->
+										<div class="col-md-4">
+											<div class="card">
+												<!-- Card 1 content goes here -->
+												<div class="embed-responsive embed-responsive-16by9">
+													<iframe class="embed-responsive-item"
+														src="https://www.youtube.com/embed/MmB9b5njVbA?si=sz02RuXEalqudse8"
+														frameborder="0" allowfullscreen></iframe>
+												</div>
+												<div class="card-body">
+													<h5 class="card-title">Minecraft</h5>
+													<p class="card-text">Description of Game</p>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<!-- Card 2 content goes here -->
+											<div class="card">
+												<div class="embed-responsive embed-responsive-16by9">
+													<iframe class="embed-responsive-item"
+														src="https://www.youtube.com/embed/vlVSJ0AvZe0?si=d1dva5nzU07IPTGe"
+														frameborder="0" allowfullscreen></iframe>
+												</div>
+												<div class="card-body">
+													<h5 class="card-title">World of Warcraft</h5>
+													<p class="card-text">Description of Game</p>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<!-- Card 3 content goes here -->
+											<div class="card">
+												<div class="embed-responsive embed-responsive-16by9">
+													<iframe class="embed-responsive-item"
+														src="https://www.youtube.com/embed/UZ6eFEjFfJ0?si=qWoI4cGL_-aAl5TX"
+														frameborder="0" allowfullscreen></iframe>
+												</div>
+												<div class="card-body">
+													<h5 class="card-title">Mortal Kombat</h5>
+													<p class="card-text">Description of Game</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Repeat this structure for each set of three trailers -->
+								<div class="carousel-item">
+									<div class="row">
+										<!-- Cards 4, 5, and 6 -->
+										<div class="col-md-4">
+											<div class="card">
+												<!-- Card 4 content goes here -->
+												<div class="embed-responsive embed-responsive-16by9">
+													<iframe class="embed-responsive-item"
+														src="https://www.youtube.com/embed/ztjfwecrY8E?si=RVG2lOfS9DDjNOt1"
+														frameborder="0" allowfullscreen></iframe>
+												</div>
+												<div class="card-body">
+													<h5 class="card-title">Call of Duty</h5>
+													<p class="card-text">Description of Game</p>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<!-- Card 5 content goes here -->
+											<div class="card">
+												<div class="embed-responsive embed-responsive-16by9">
+													<iframe class="embed-responsive-item"
+														src="https://www.youtube.com/embed/MmB9b5njVbA?si=sz02RuXEalqudse8"
+														frameborder="0" allowfullscreen></iframe>
+												</div>
+												<div class="card-body">
+													<h5 class="card-title">Minecraft</h5>
+													<p class="card-text">Description of Game</p>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<!-- Card 6 content goes here -->
+											<div class="card">
+												<div class="embed-responsive embed-responsive-16by9">
+													<iframe class="embed-responsive-item"
+														src="https://www.youtube.com/embed/MmB9b5njVbA?si=sz02RuXEalqudse8"
+														frameborder="0" allowfullscreen></iframe>
+												</div>
+												<div class="card-body">
+													<h5 class="card-title">Minecraft</h5>
+													<p class="card-text">Description of Game</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="carousel-item">
+									<div class="row">
+										<!-- Cards 7, 8, and 9 -->
+										<div class="col-md-4">
+											<div class="card">
+												<!-- Card 7 content goes here -->
+												<div class="embed-responsive embed-responsive-16by9">
+													<iframe class="embed-responsive-item"
+														src="https://www.youtube.com/embed/MmB9b5njVbA?si=sz02RuXEalqudse8"
+														frameborder="0" allowfullscreen></iframe>
+												</div>
+												<div class="card-body">
+													<h5 class="card-title">Minecraft</h5>
+													<p class="card-text">Description of Game</p>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<!-- Card 8 content goes here -->
+											<div class="card">
+												<div class="embed-responsive embed-responsive-16by9">
+													<iframe class="embed-responsive-item"
+														src="https://www.youtube.com/embed/MmB9b5njVbA?si=sz02RuXEalqudse8"
+														frameborder="0" allowfullscreen></iframe>
+												</div>
+												<div class="card-body">
+													<h5 class="card-title">Minecraft</h5>
+													<p class="card-text">Description of Game</p>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<!-- Card 9 content goes here -->
+											<div class="card">
+												<div class="embed-responsive embed-responsive-16by9">
+													<iframe class="embed-responsive-item"
+														src="https://www.youtube.com/embed/MmB9b5njVbA?si=sz02RuXEalqudse8"
+														frameborder="0" allowfullscreen></iframe>
+												</div>
+												<div class="card-body">
+													<h5 class="card-title">Mortal Kombat</h5>
+													<p class="card-text">Description of Game</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="carousel-item">
+								 <div class="row justify-content-center">
+									
+										<!-- Card 10 -->
+										<div class="col-md-4">
+											<div class="card">
+												<!-- Card 1 content goes here -->
+												<div class="embed-responsive embed-responsive-16by9">
+													<iframe class="embed-responsive-item"
+														src="https://www.youtube.com/embed/MmB9b5njVbA?si=sz02RuXEalqudse8"
+														frameborder="0" allowfullscreen></iframe>
+												</div>
+												<div class="card-body">
+													<h5 class="card-title">number 10</h5>
+													<p class="card-text">Description of Game</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Add more carousel items as needed -->
+							</div>
+							<button class="carousel-control-prev" type="button"
+								data-bs-target="#trailerCarousel" data-bs-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								<span class="visually-hidden">Previous</span>
+							</button>
+							<button class="carousel-control-next" type="button"
+								data-bs-target="#trailerCarousel" data-bs-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span>
+								<span class="visually-hidden">Next</span>
+							</button>
 						</div>
 					</div>
 				</div>
-				<!-- Repeat the above card structure for up to 10 games -->
-				<!-- Example for Game card 2 -->
-				<div class="col-md-2">
-					<div class="card game-card">
-						<img
-							src="https://wallpapercosmos.com/w/full/a/a/9/358-1920x1080-desktop-full-hd-world-of-warcraft-background-photo.jpg"
-							class="card-img-top" alt="WoWarcraft">
-						<div class="card-body">
-							<h5 class="card-title">Game 2</h5>
-							<p class="card-text">Description of Game 2.</p>
-						</div>
-					</div>
-				</div>
-				<!-- Repeat the above card structure for up to 10 games -->
-				<div class="col-md-2">
-					<div class="card game-card">
-						<img
-							src="https://wallpapercosmos.com/w/full/a/a/9/358-1920x1080-desktop-full-hd-world-of-warcraft-background-photo.jpg"
-							class="card-img-top" alt="WoWarcraft">
-						<div class="card-body">
-							<h5 class="card-title">Game 3</h5>
-							<p class="card-text">Description of Game 3.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-2">
-					<div class="card game-card">
-						<img
-							src="https://wallpapercosmos.com/w/full/a/a/9/358-1920x1080-desktop-full-hd-world-of-warcraft-background-photo.jpg"
-							class="card-img-top" alt="WoWarcraft">
-						<div class="card-body">
-							<h5 class="card-title">Game 4</h5>
-							<p class="card-text">Description of Game 4.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-2">
-					<div class="card game-card">
-						<img
-							src="https://wallpapercosmos.com/w/full/a/a/9/358-1920x1080-desktop-full-hd-world-of-warcraft-background-photo.jpg"
-							class="card-img-top" alt="WoWarcraft">
-						<div class="card-body">
-							<h5 class="card-title">Game 5</h5>
-							<p class="card-text">Description of Game 5.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-2">
-					<div class="card game-card">
-						<img
-							src="https://wallpapercosmos.com/w/full/a/a/9/358-1920x1080-desktop-full-hd-world-of-warcraft-background-photo.jpg"
-							class="card-img-top" alt="WoWarcraft">
-						<div class="card-body">
-							<h5 class="card-title">Game 6</h5>
-							<p class="card-text">Description of Game 6.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-2">
-					<div class="card game-card">
-						<img
-							src="https://wallpapercosmos.com/w/full/a/a/9/358-1920x1080-desktop-full-hd-world-of-warcraft-background-photo.jpg"
-							class="card-img-top" alt="WoWarcraft">
-						<div class="card-body">
-							<h5 class="card-title">Game 7</h5>
-							<p class="card-text">Description of Game 7.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-2">
-					<div class="card game-card">
-						<img
-							src="https://wallpapercosmos.com/w/full/a/a/9/358-1920x1080-desktop-full-hd-world-of-warcraft-background-photo.jpg"
-							class="card-img-top" alt="WoWarcraft">
-						<div class="card-body">
-							<h5 class="card-title">Game 8</h5>
-							<p class="card-text">Description of Game 8.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-2">
-					<div class="card game-card">
-						<img
-							src="https://wallpapercosmos.com/w/full/a/a/9/358-1920x1080-desktop-full-hd-world-of-warcraft-background-photo.jpg"
-							class="card-img-top" alt="WoWarcraft">
-						<div class="card-body">
-							<h5 class="card-title">Game 9</h5>
-							<p class="card-text">Description of Game 9.</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-2">
-					<div class="card game-card">
-						<img
-							src="https://wallpapercosmos.com/w/full/a/a/9/358-1920x1080-desktop-full-hd-world-of-warcraft-background-photo.jpg"
-							class="card-img-top" alt="WoWarcraft">
-						<div class="card-body">
-							<h5 class="card-title">Game 10</h5>
-							<p class="card-text">Description of Game 10.</p>
-						</div>
-					</div>
-				</div>
-
-
-
-				<!-- Offcanvas for backdrop button -->
-				<div class="offcanvas offcanvas-start" data-bs-scroll="true"
-					tabindex="-1" id="offcanvasWithBothOptions"
-					aria-labelledby="offcanvasWithBothOptionsLabel">
-					<div class="offcanvas-header">
-						<h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">List
-							of all games</h5>
-						<button type="button" class="btn-close"
-							data-bs-dismiss="offcanvas" aria-label="Close"></button>
-					</div>
-					<div class="offcanvas-body">
-						<p>**Games List**</p>
-					</div>
-				</div>
-
-
-
 			</div>
-		</div>
+			<!-- End of Cards Section -->
 
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-			crossorigin="anonymous"></script>
+
+			<!-- Offcanvas for backdrop button -->
+			<%@ include file="OffCanvas.jsp"%>
+			<div class="offcanvas offcanvas-start" data-bs-scroll="true"
+				tabindex="-1" id="offcanvasWithBothOptions"
+				aria-labelledby="offcanvasWithBothOptionsLabel">
+				<div class="offcanvas-header">
+					<h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">List
+						of all games</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+						aria-label="Close"></button>
+				</div>
+				<div class="offcanvas-body">
+					<ul>
+						<!-- Iterate over the list of games and display id, title, and description -->
+						<c:forEach var="game" items="${gameList}">
+							<li>ID: ${game.id}</li>
+							<li>Title: ${game.title}</li>
+							<li>Description: ${game.description}</li>
+						</c:forEach>
+					</ul>
+				</div>
+			</div>
+
+			<script
+				src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+				integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+				crossorigin="anonymous"></script>
 </body>
 </html>

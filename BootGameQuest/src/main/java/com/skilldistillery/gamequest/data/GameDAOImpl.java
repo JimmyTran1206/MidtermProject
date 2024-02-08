@@ -2,7 +2,7 @@ package com.skilldistillery.gamequest.data;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import com.skilldistillery.gamequest.entities.Game;
 
@@ -11,7 +11,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 
 @Transactional
-@Service
+@Repository
 public class GameDAOImpl implements GameDAO {
 
 	@PersistenceContext
