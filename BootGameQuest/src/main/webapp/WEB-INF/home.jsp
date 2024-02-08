@@ -319,7 +319,7 @@ body {
 			<!-- End of Cards Section -->
 
 
-			<!-- Offcanvas for backdrop button -->
+		<!-- Offcanvas for backdrop button -->
 			<%@ include file="OffCanvas.jsp"%>
 			<div class="offcanvas offcanvas-start" data-bs-scroll="true"
 				tabindex="-1" id="offcanvasWithBothOptions"
