@@ -8,7 +8,7 @@ public interface CharacterDAO {
 	
 	public List<GameCharacter> getAllCharacters();
 	
-	public List<GameCharacter> getCharactersByGameId();
+	public List<GameCharacter> getCharactersByGameId(int gameId);
 	
 	public GameCharacter getCharacterById(int id);
 	
