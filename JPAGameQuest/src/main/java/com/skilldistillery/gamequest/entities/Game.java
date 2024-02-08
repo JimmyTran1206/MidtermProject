@@ -61,28 +61,28 @@ public class Game {
 	@ManyToMany(mappedBy = "userGames")
 	private List<User> gameUsers;
 
-	//add -remove GameImage
+	// add -remove GameImage
 	public void addGameImage(GameImage gameImage) {
-		if (gameImages==null) {
-			gameImages=new ArrayList<>();
+		if (gameImages == null) {
+			gameImages = new ArrayList<>();
 		}
-		if(!gameImages.contains(gameImage)) {
+		if (!gameImages.contains(gameImage)) {
 			gameImages.add(gameImage);
-			if(gameImage.getGame()!=null) {
+			if (gameImage.getGame() != null) {
 				gameImage.getGame().removeGameImage(gameImage);
 			}
 			gameImage.setGame(this);
 		}
 	}
-	
+
 	public void removeGameImage(GameImage gameImage) {
-		if(gameImages!=null && gameImages.contains(gameImage)) {
+		if (gameImages != null && gameImages.contains(gameImage)) {
 			gameImages.remove(gameImage);
 			gameImage.setGame(null);
 		}
 	}
-	//---finish adding new stuffs--
-	
+	// ---finish adding new stuffs--
+
 	public Game() {
 
 	}
@@ -202,41 +202,41 @@ public class Game {
 	}
 
 	public void removeGenre(Genre genre) {
-		if(genres != null && genres.contains(genre)) {
+		if (genres != null && genres.contains(genre)) {
 			genres.remove(genre);
 			genre.removeGame(this);
 		}
 	}
 
 	public void addGamePlatform(Platform platform) {
-		if(gamePlatforms == null) {
+		if (gamePlatforms == null) {
 			gamePlatforms = new ArrayList<>();
 		}
-		if(!gamePlatforms.contains(platform)) {
+		if (!gamePlatforms.contains(platform)) {
 			gamePlatforms.add(platform);
-			platform.addGame(this);		
+			platform.addGame(this);
 		}
 	}
 
 	public void removeGamePlatform(Platform platform) {
-		if(gamePlatforms != null && gamePlatforms.contains(platform)) {
+		if (gamePlatforms != null && gamePlatforms.contains(platform)) {
 			gamePlatforms.remove(platform);
 			platform.removeGame(this);
 		}
 	}
-	
-	public  void addGameUser(User user) {
-		if(gameUsers == null) {
+
+	public void addGameUser(User user) {
+		if (gameUsers == null) {
 			gameUsers = new ArrayList<>();
 		}
-		if(!gameUsers.contains(user)) {
+		if (!gameUsers.contains(user)) {
 			gameUsers.add(user);
 			user.addUserGame(this);
 		}
 	}
-	
+
 	public void removeGameUser(User user) {
-		if(gameUsers != null && gameUsers.contains(user)) {
+		if (gameUsers != null && gameUsers.contains(user)) {
 			gameUsers.remove(user);
 			user.removeUserGame(this);
 		}

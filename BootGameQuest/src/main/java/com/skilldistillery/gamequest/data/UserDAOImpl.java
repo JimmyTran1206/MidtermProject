@@ -146,18 +146,43 @@ public class UserDAOImpl implements UserDAO {
 		game.setUserId(userId);
 		em.persist(game);
 		em.flush();
-		Game newGame= em.find(Game.class, game.getId());
-		
-		for (int i=0; i<screenshots.length;i++) {
-			GameImage screenshot=new GameImage();
+		Game newGame = em.find(Game.class, game.getId());
+
+		for (int i = 0; i < screenshots.length; i++) {
+			GameImage screenshot = new GameImage();
 			screenshot.setImageUrl(screenshots[i]);
 			screenshot.setGame(newGame);
 			em.persist(screenshot);
 		}
 
-		User user= em.find(User.class, userId);
+		User user = em.find(User.class, userId);
 		user.addUserGame(game);
 		return game.getId();
 	}
 
+	@Override
+	public Game getGameById(int gameId) {
+		return em.find(Game.class, gameId);
+	}
+
+	@Override
+	public User findUserByIdJoinFetchGameList(int id) {
+		try {
+			String query = "SELECT u FROM User u LEFT JOIN FETCH u.userGames WHERE u.id= :userId";
+			User u = em.createQuery(query, User.class).setParameter("userId", id).getResultList().get(0);
+			return u;
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	@Override
+	public Game addGametoUserList(int gameId, int userId) {
+		Game game = em.find(Game.class, gameId);
+		User user = em.find(User.class, userId);
+		user.addUserGame(game);
+		return game;
+	}
+
+	// END OF USER DAO \\
 }

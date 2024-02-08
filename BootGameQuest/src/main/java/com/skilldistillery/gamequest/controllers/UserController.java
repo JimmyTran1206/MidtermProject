@@ -221,32 +221,77 @@ public class UserController {
 	// user - add a new game by inputing title
 	@GetMapping(value = "userAddGame.do")
 	public String userAddGame(Model model, @RequestParam("gameTitle") String gameTitle) {
-		List <Game> gameList = userDAO.getGameListByUserInputTitle(gameTitle);
+		List<Game> gameList = userDAO.getGameListByUserInputTitle(gameTitle);
 		if (gameList.isEmpty()) {
-			model.addAttribute("title",gameTitle);
+			model.addAttribute("title", gameTitle);
 			return "User/UserAddGameForm";
-		}else {
+		} else {
 			model.addAttribute("gameTitle", gameTitle);
 			model.addAttribute("gameList", gameList);
 			return "User/UserGameListByInputTitle";
 		}
 	}
-	
+
 	// user- proceed to add game from the returned game list with input title
 	@GetMapping(value = "viewUserAddGameForm.do")
 	public String viewUserAddGameForm(Model model, @RequestParam("title") String title) {
-		model.addAttribute("title",title);
+		model.addAttribute("title", title);
 		return "User/UserAddGameForm";
 	}
-	
+
 	// user- confirm adding new game userAddGameConfirm.do
 	@PostMapping(value = "userAddGameConfirm.do")
-	public String userAddGameConfirm(HttpSession session, Game game, @RequestParam(value="screenshots[]") String[] screenshots ) {
+	public String userAddGameConfirm(HttpSession session, Game game,
+			@RequestParam(value = "screenshots[]") String[] screenshots) {
 		User currentUser = (User) session.getAttribute("loggedIn");
-		
-		userDAO.userAddNewGame(currentUser.getId(), game, screenshots);
-		return "redirect:viewUserGameList.do";
+
+		// process the youtube link
+		String youtubeURL = game.getTrailerUrl();
+		String youtubeID = youtubeURL.substring(youtubeURL.indexOf("=") + 1, youtubeURL.indexOf("&"));
+		game.setTrailerUrl(youtubeID);
+		// finish processing the youtube link
+
+		int gameId=userDAO.userAddNewGame(currentUser.getId(), game, screenshots);
+		String redirStr = "redirect:viewGameDetails.do?id=" + gameId;
+
+		return redirStr;
 	}
-	
-	//------------- END of UserController file ----------------\\
+
+	// user - view game details viewGameDetails.do
+	@GetMapping(value = "viewGameDetails.do")
+	public String viewGameDetails(Model model, @RequestParam("id") int gameId, HttpSession session) {
+		User currentUserTemp = (User) session.getAttribute("loggedIn");
+		User currentUser = userDAO.findUserByIdJoinFetchGameList(currentUserTemp.getId());
+		Game game = userDAO.getGameById(gameId);
+		User postedUser = userDAO.findUserByIdJoinFetchGameList(game.getUserId());
+		boolean allowGameDetailUpdate = false;
+		boolean gameInCurrentUserList = false;
+		boolean isOriginalPost = false;
+		String originalAuthor = postedUser.getUsername();
+		if (currentUser.getId() == game.getUserId()) {
+			allowGameDetailUpdate = true;
+			isOriginalPost = true;
+		}
+		if (currentUser.getUserGames().contains(game)) {
+			gameInCurrentUserList = true;
+		}
+		model.addAttribute("isOriginalPost", isOriginalPost);
+		model.addAttribute("originalAuthor", originalAuthor);
+		model.addAttribute("gameInCurrentUserList", gameInCurrentUserList);
+		model.addAttribute("screenshots", game.getGameImages());
+		model.addAttribute("allowGameDetailUpdate", allowGameDetailUpdate);
+		model.addAttribute("game", game);
+		return "GameDetails";
+	}
+
+	// user - add game to user list
+	@GetMapping(value = "addGameToUserList.do")
+	public String addGameToUserList(Model model, @RequestParam("gameId") int gameId, HttpSession session) {
+		User currentUser = (User) session.getAttribute("loggedIn");
+		userDAO.addGametoUserList(gameId, currentUser.getId());
+		String redirStr = "redirect:viewGameDetails.do?id=" + gameId;
+		return redirStr;
+	}
+
+	// ------------- END of UserController file ----------------\\
 }
