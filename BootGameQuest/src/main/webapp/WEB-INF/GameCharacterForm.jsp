@@ -12,7 +12,7 @@
 <body>
 	<c:if test="${empty character}">
 		<div class="container-fluid">
-			<div class="row mx-4">
+			<div class="row mx-4 my-4">
 				<div class="col-12">
 					<form action="addCharacter.do" method="POST">
 						<h2 class="text-center mb-4">Add New Character</h2>
@@ -44,7 +44,7 @@
 
 	<c:if test="${not empty character}">
 		<div class="container-fluid">
-			<div class="row mx-4">
+			<div class="row mx-4 my-4">
 				<div class="col-12">
 					<form action="saveCharacter.do" method="POST">
 						<h2 class="text-center mb-4">Update Character</h2>
