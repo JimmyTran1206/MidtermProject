@@ -87,8 +87,10 @@ public class CharacterController {
 	
 	@GetMapping(path = {"getGameCharacters.do"}, params = "gameId")
 	public String getGameCharacterList(Model model, @RequestParam("gameId") int gameId) {
+		Game characterGame = gameDAO.searchGameById(gameId);
 		List<GameCharacter> gameCharacters = charDAO.getCharactersByGameId(gameId);
 		model.addAttribute("characterList", gameCharacters);
+		model.addAttribute("game", characterGame);
 		return "GameCharacterList";
 	}
 

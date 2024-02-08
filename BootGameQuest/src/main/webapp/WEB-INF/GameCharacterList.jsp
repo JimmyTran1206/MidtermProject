@@ -17,28 +17,31 @@
 	<header>
 		<jsp:include page="nav.jsp" />
 	</header>
+	<h1 class="text-center">${game.title} Characters</h1>
 
-	<c:forEach items="${characterList}" var="character">
-		<div class="card" style="width: 18rem;">
-			<img src="..." class="card-img-top" alt="...">
-			<div class="card-body">
-				<h5 class="card-title">${character.name}</h5>
-				<p class="card-text">${character.description}</p>
+	<div class="row justify-content-between mx-2">
+		<c:forEach items="${characterList}" var="character">
+			<div class="card px-0 py-0 col-2">
+				<img src="${character.avatarUrl}"
+					class="card-img-top" alt="" />
+				<div class="card-body">
+				<a href="getCharacter.do?charId=${character.id}"><b>${character.name}</b></a>
+				</div>
 			</div>
-		</div>
-	</c:forEach>
+		</c:forEach>
+	</div>
 
-
-
-
-
-
-
-
-
-
-
-
+<style>
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+a{
+text-decoration: none;
+color: black;
+}
+</style>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
