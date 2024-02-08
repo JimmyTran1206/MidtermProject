@@ -66,6 +66,7 @@ body {
 </style>
 </head>
 <body>
+
 	<header>
 		<jsp:include page="nav.jsp" />
 	</header>
