@@ -150,27 +150,28 @@ body {
 </div>
 
 
+<!-- Offcanvas for backdrop button -->
+  <%@ include file="OffCanvas.jsp" %>
+<div class="offcanvas offcanvas-start" data-bs-scroll="true"
+    tabindex="-1" id="offcanvasWithBothOptions"
+    aria-labelledby="offcanvasWithBothOptionsLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">List of all games</h5>
+        <button type="button" class="btn-close"
+            data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <ul>
+            <!-- Iterate over the list of games and display id, title, and description -->
+            <c:forEach var="game" items="${gameList}">
+                <li>ID: ${game.id}</li>
+                <li>Title: ${game.title}</li>
+                <li>Description: ${game.description}</li>
+            </c:forEach>
+        </ul>
+    </div>
+</div>
 
-
-				<!-- Offcanvas for backdrop button -->
-				<div class="offcanvas offcanvas-start" data-bs-scroll="true"
-					tabindex="-1" id="offcanvasWithBothOptions"
-					aria-labelledby="offcanvasWithBothOptionsLabel">
-					<div class="offcanvas-header">
-						<h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">List
-							of all games</h5>
-						<button type="button" class="btn-close"
-							data-bs-dismiss="offcanvas" aria-label="Close"></button>
-					</div>
-					<div class="offcanvas-body">
-						<p>**Games List**</p>
-					</div>
-				</div>
-
-
-
-			</div>
-		</div>
 
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

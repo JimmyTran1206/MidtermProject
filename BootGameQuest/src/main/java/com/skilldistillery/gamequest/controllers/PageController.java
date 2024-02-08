@@ -13,36 +13,33 @@ import com.skilldistillery.gamequest.entities.Game;
 
 @Controller
 public class PageController {
-	
+
 	@Autowired
 	private UserDAO userDAO;
-	
+
 	@Autowired
 	private GameDAO gameDAO;
-	
+
 	@GetMapping("/GameDetails")
 	public String GameDetails() {
 		return "GameDetails";
 	}
-	
+
 	@GetMapping("GameList")
 	public String GameList() {
 		return "GameList";
 	}
-	
+
 	@GetMapping("Profile")
 	public String ProfilePage() {
 		return "Profile";
 	}
-	
-	@GetMapping(path= { "/", "home.do", ""})
+
+	@GetMapping(path = { "/", "home.do", "" })
 	public String index(Model model) {
 		List<Game> games = gameDAO.getAllGames();
 		model.addAttribute("games", games);
 		return "home";
 	}
-	
-	
-	
 
 }
