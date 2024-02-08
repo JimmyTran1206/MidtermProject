@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.skilldistillery.gamequest.data.CharacterDAO;
 import com.skilldistillery.gamequest.data.GameDAO;
+import com.skilldistillery.gamequest.entities.Game;
 import com.skilldistillery.gamequest.entities.GameCharacter;
 import com.skilldistillery.gamequest.entities.GameCharacterImage;
 
@@ -34,7 +35,9 @@ public class CharacterController {
 	public String getCharacterbyId(@RequestParam("charId") int charId, Model model) {
 		GameCharacter gameChar = charDAO.getCharacterById(charId);
 		List<GameCharacterImage> charImages = gameChar.getCharImages();
-
+		Game charGame = gameDAO.searchGameById(gameChar.getGameId());
+		
+		model.addAttribute("game", charGame);
 		model.addAttribute("character", gameChar);
 		model.addAttribute("characterImgs", charImages);
 
@@ -66,8 +69,8 @@ public class CharacterController {
 		return "GameCharacterForm";
 	}
 
-	@RequestMapping(path = { "deleteCharacter.do" }, params = "characterId")
-	public String deleteCharacter(Model model, @RequestParam("characterId") int characterId) {
+	@RequestMapping(path = { "deleteCharacter.do" }, params = "charId")
+	public String deleteCharacter(Model model, @RequestParam("charId") int characterId) {
 		GameCharacter characterToDelete = charDAO.getCharacterById(characterId);
 		String charToDelete = charDAO.deleteCharacter(characterId);
 		return "CharacterDeletion";
@@ -80,6 +83,14 @@ public class CharacterController {
 		model.addAttribute("charId", charId);
 		model.addAttribute("character", updatedCharacter);
 		return "CharacterDetails";
+	}	
+	
+	@PostMapping(path = {"GameCharacterList"}, params = "gameId")
+	public String getGameCharacterList(Model model, @RequestParam("gameId") int gameId) {
+		List<GameCharacter> gameCharacters = charDAO.getCharactersByGameId(gameId);
+		model.addAttribute("characterList", gameCharacters);
+		model.addAttribute("gameId", gameId);
+		return "GameCharacterList";
 	}
 
 }
