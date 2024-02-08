@@ -85,11 +85,10 @@ public class CharacterController {
 		return "CharacterDetails";
 	}	
 	
-	@PostMapping(path = {"GameCharacterList"}, params = "gameId")
+	@GetMapping(path = {"getGameCharacters.do"}, params = "gameId")
 	public String getGameCharacterList(Model model, @RequestParam("gameId") int gameId) {
 		List<GameCharacter> gameCharacters = charDAO.getCharactersByGameId(gameId);
 		model.addAttribute("characterList", gameCharacters);
-		model.addAttribute("gameId", gameId);
 		return "GameCharacterList";
 	}
 
