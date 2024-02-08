@@ -25,8 +25,10 @@ public class CharacterDAOImpl implements CharacterDAO {
 	}
 
 	@Override
-	public List<GameCharacter> getCharactersByGameId() {
-		return null;
+	public List<GameCharacter> getCharactersByGameId(int gameId) {
+		String jpql = "SELECT character FROM GameCharacter character WHERE character.gameId = :gameId";
+		List<GameCharacter> gameCharacters = em.createQuery(jpql, GameCharacter.class).setParameter("gameId", gameId).getResultList();
+		return gameCharacters;
 	}
 
 	@Override

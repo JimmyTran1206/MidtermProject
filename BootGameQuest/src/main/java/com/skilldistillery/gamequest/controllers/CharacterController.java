@@ -83,12 +83,13 @@ public class CharacterController {
 		model.addAttribute("charId", charId);
 		model.addAttribute("character", updatedCharacter);
 		return "CharacterDetails";
-	}
+	}	
 	
-	@GetMapping("getAllCharacters")
-	public String getAllCharacters(Model model) {
-		List<GameCharacter> gameCharacters = charDAO.getAllCharacters();
+	@PostMapping(path = {"GameCharacterList"}, params = "gameId")
+	public String getGameCharacterList(Model model, @RequestParam("gameId") int gameId) {
+		List<GameCharacter> gameCharacters = charDAO.getCharactersByGameId(gameId);
 		model.addAttribute("characterList", gameCharacters);
+		model.addAttribute("gameId", gameId);
 		return "GameCharacterList";
 	}
 
