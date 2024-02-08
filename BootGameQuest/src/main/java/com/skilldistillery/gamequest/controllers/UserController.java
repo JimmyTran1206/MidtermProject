@@ -218,7 +218,7 @@ public class UserController {
 		return "redirect:viewUserGameList.do";
 	}
 
-	// user - add a new game by inputing title
+	// user - add a new game by inputting title
 	@GetMapping(value = "userAddGame.do")
 	public String userAddGame(Model model, @RequestParam("gameTitle") String gameTitle) {
 		List<Game> gameList = userDAO.getGameListByUserInputTitle(gameTitle);
@@ -251,7 +251,7 @@ public class UserController {
 		game.setTrailerUrl(youtubeID);
 		// finish processing the youtube link
 
-		int gameId=userDAO.userAddNewGame(currentUser.getId(), game, screenshots);
+		int gameId = userDAO.userAddNewGame(currentUser.getId(), game, screenshots);
 		String redirStr = "redirect:viewGameDetails.do?id=" + gameId;
 
 		return redirStr;
@@ -289,6 +289,38 @@ public class UserController {
 	public String addGameToUserList(Model model, @RequestParam("gameId") int gameId, HttpSession session) {
 		User currentUser = (User) session.getAttribute("loggedIn");
 		userDAO.addGametoUserList(gameId, currentUser.getId());
+		String redirStr = "redirect:viewGameDetails.do?id=" + gameId;
+		return redirStr;
+	}
+
+	// user - view modify game info 
+	@GetMapping(value = "viewModifyGameInfoForm.do")
+	public String userModifyGameInfo(Model model, @RequestParam("id") int gameId ) {
+		Game game = userDAO.getGameById(gameId);
+		List<GameImage> screenshotList=userDAO.getGameScreenshotList(gameId);
+		int screenshotListSize=0;
+		if(!screenshotList.isEmpty()) {
+			screenshotListSize=screenshotList.size();
+		}
+		model.addAttribute("game", game);
+		model.addAttribute("screenshotList", screenshotList);
+		model.addAttribute("screenshotListSize", screenshotListSize);
+		
+		return "User/UserModifyGameForm";
+	}
+	
+	// user - confirm modifying game confirm userModifyGameConfirm.do
+		@PostMapping(value = "userModifyGameConfirm.do")
+	public String userModifyGameConfirm(Game game, @RequestParam(value = "screenshots[]") String[] screenshots) {
+
+		// process the youtube link
+		String youtubeURL = game.getTrailerUrl();
+		String youtubeID = youtubeURL.substring(youtubeURL.indexOf("=") + 1, youtubeURL.indexOf("&"));
+		game.setTrailerUrl(youtubeID);
+		// finish processing the youtube link
+
+		int gameId = userDAO.userModifyGameFields(game);
+		userDAO.userModifyGameScreenShots(gameId, screenshots);
 		String redirStr = "redirect:viewGameDetails.do?id=" + gameId;
 		return redirStr;
 	}

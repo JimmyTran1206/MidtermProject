@@ -184,5 +184,47 @@ public class UserDAOImpl implements UserDAO {
 		return game;
 	}
 
+	@Override
+	public List<GameImage> getGameScreenshotList(int gameId) {
+		Game game = em.find(Game.class, gameId);
+		return game.getGameImages();
+	}
+
+	// (1) Merge with (2) when refactoring  
+	@Override
+	public int userModifyGameFields(Game game) {
+		Game originalGame= em.find(Game.class, game.getId());
+		// update original game fields
+		originalGame.setTitle(game.getTitle());
+		originalGame.setAvatarUrl(game.getAvatarUrl());
+		originalGame.setTrailerUrl(game.getTrailerUrl());
+		originalGame.setDescription(game.getDescription());
+		
+		//Remove all screenshots
+		List<GameImage> gameImages=originalGame.getGameImages();
+		for(GameImage screenshot: gameImages) {
+			em.remove(screenshot);		
+			}
+		
+		em.flush();
+		return originalGame.getId();
+	}
+
+
+	// (2) Merge with (1) when refactoring  
+	@Override
+	public int userModifyGameScreenShots(int gameId, String[] screenshots) {
+		Game originalGame= em.find(Game.class, gameId);
+
+		// add screenshots to originalGame
+				for (int i = 0; i < screenshots.length; i++) {
+					GameImage screenshot = new GameImage();
+					screenshot.setImageUrl(screenshots[i]);
+					screenshot.setGame(originalGame);
+					em.persist(screenshot);;
+				}
+		return originalGame.getId();
+	}
+
 	// END OF USER DAO \\
 }

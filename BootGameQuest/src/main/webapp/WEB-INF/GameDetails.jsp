@@ -69,11 +69,11 @@
 
 			<!-- Row 2 Game title -->
 			<div class="row my-4">
-				<div class="col-3"></div>
-				<div class="col-6 text-center">
+				<div class="col-1"></div>
+				<div class="col-10 text-center">
 					<h1>${game.title}</h1>
 				</div>
-				<div class="col-3"></div>
+				<div class="col-1"></div>
 			</div>
 			<!-- End Row 2 -->
 
@@ -126,7 +126,7 @@
 
 				<c:if test="${allowGameDetailUpdate == true }">
 					<div class="col text-center">
-						<a href="userModifyGameInfo?id=${game.id}" class="btn btn-primary">Modify Game Info</a>
+						<a href="viewModifyGameInfoForm.do?id=${game.id}" class="btn btn-primary">Modify Game Info</a>
 					</div>
 				</c:if>
 
