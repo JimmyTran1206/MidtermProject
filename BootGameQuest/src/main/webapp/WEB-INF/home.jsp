@@ -57,6 +57,17 @@ body {
 }
 
 
+/* Offcanvas Styles */
+.offcanvas-header {
+    background-color: #6094c3; /* Header background color */
+    color: #153d62 /* Header text color */
+}
+
+.offcanvas-body {
+    background-color: #9fc5e8; /* Body background color */
+    color: #153d62; /* Body text color */
+}
+
 
 
     @keyframes scroll {
@@ -73,18 +84,18 @@ body {
     <header>
         <jsp:include page="nav.jsp" />
     </header>
-  <!-- Backdrop Button -->
-<div class="container-fluid" style="position: fixed; top: calc(50px + 0.1cm);">
-    <div class="row">
-        <div class="col-md-12 text-left mt-3">
-            <button class="btn btn-primary" type="button"
-                data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasWithBothOptions"
-                aria-controls="offcanvasWithBothOptions"
-                style="background-color: #153d62;">List of Games</button>
+ <!-- Backdrop Button -->
+    <div class="container-fluid" style="position: fixed; top: calc(50px + 0.1cm);">
+        <div class="row">
+            <div class="col-md-12 text-left mt-3">
+                <button class="btn btn-primary" type="button"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasWithBothOptions"
+                    aria-controls="offcanvasWithBothOptions"
+                    style="background-color: #153d62;">List of Games</button>
+            </div>
         </div>
     </div>
-</div>
 
     </header>
 
