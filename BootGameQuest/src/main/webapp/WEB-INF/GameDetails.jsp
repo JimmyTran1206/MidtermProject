@@ -126,13 +126,17 @@
 
 				<c:if test="${allowGameDetailUpdate == true }">
 					<div class="col text-center">
-						<a href="viewModifyGameInfoForm.do?id=${game.id}" class="btn btn-primary">Modify Game Info</a>
+						<a href="viewModifyGameInfoForm.do?id=${game.id}"
+							class="btn btn-primary">Modify Game Info</a>
 					</div>
 				</c:if>
 
 
 				<div class="col text-center">
-					<a href="" class="btn btn-primary">View game character</a>
+					<form action="getGameCharacters.do" method="GET">
+						<button type="submit" name="gameId" value="${game.id}" class="btn btn-primary my-2">Character
+							List</button>
+					</form>
 				</div>
 
 				<div class="col text-end">
