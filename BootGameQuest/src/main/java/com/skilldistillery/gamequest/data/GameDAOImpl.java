@@ -29,4 +29,10 @@ public class GameDAOImpl implements GameDAO {
 		return em.find(Game.class, id);
 	}
 
+	@Override
+	public Game createGame(Game game) {
+		em.persist(game);
+		return game;
+	}
+
 }

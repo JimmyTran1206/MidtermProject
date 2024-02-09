@@ -12,4 +12,7 @@ public interface GameDAO {
 	public List<Game> getAllGames();
 	
 	public Game searchGameById(int id);
+	
+	
+	public Game createGame(Game game);
 }
