@@ -12,6 +12,12 @@
 <meta charset="UTF-8">
 <title>Character Details</title>
 </head>
+
+<style>
+body {
+	background-color: #8d99ae;
+}
+</style>
 <body>
 
 	<header>

@@ -73,7 +73,7 @@ public class UserController {
 	@GetMapping(value = "logout.do")
 	public String logout(HttpSession session) {
 		session.removeAttribute("loggedIn");
-		return "home";
+		return "redirect:home.do";
 	}
 
 	// userRegister.do - handle user register
