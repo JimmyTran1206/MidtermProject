@@ -109,38 +109,45 @@
 			</div>
 			<!-- End Row 4 Game description -->
 
-			<!-- Row 5 page control -->
-			<div class="row my-4">
-				<div class="col-1"></div>
-				<c:if test="${gameInCurrentUserList == false }">
-					<div class="col text-start">
-						<a href="addGameToUserList.do?gameId=${game.id}"
-							class="btn btn-primary">🩶 Add to List</a>
-					</div>
-				</c:if>
-				<c:if test="${gameInCurrentUserList == true }">
-					<div class="col text-start">
-						<a href="" class="btn btn-primary">❤️</a>
-					</div>
-				</c:if>
 
-				<c:if test="${allowGameDetailUpdate == true }">
+
+
+			<!-- Row 5 page control only show for loggedIn!=null -->
+			<c:if test="${not empty loggedIn}">
+				<div class="row my-4">
+					<div class="col-1"></div>
+					<c:if test="${gameInCurrentUserList == false }">
+						<div class="col text-start">
+							<a href="addGameToUserList.do?gameId=${game.id}"
+								class="btn btn-primary">🩶 Add to List</a>
+						</div>
+					</c:if>
+					<c:if test="${gameInCurrentUserList == true }">
+						<div class="col text-start">
+							<a href="" class="btn btn-primary">❤️</a>
+						</div>
+					</c:if>
+
+					<c:if test="${allowGameDetailUpdate == true }">
+						<div class="col text-center">
+							<a href="viewModifyGameInfoForm.do?id=${game.id}"
+								class="btn btn-primary">Modify Game Info</a>
+						</div>
+					</c:if>
+
+
 					<div class="col text-center">
-						<a href="viewModifyGameInfoForm.do?id=${game.id}" class="btn btn-primary">Modify Game Info</a>
+						<a href="getGameCharacters.do?gameId=${game.id}" class="btn btn-primary">View game character</a>
 					</div>
-				</c:if>
 
-
-				<div class="col text-center">
-					<a href="" class="btn btn-primary">View game character</a>
+					<div class="col text-end">
+						<a href="viewUserGameList.do" class="btn btn-primary">My game
+							list</a>
+					</div>
+					<div class="col-1"></div>
 				</div>
+			</c:if>
 
-				<div class="col text-end">
-					<a href="viewUserGameList.do" class="btn btn-primary">My game
-						list</a>
-				</div>
-				<div class="col-1"></div>
-			</div>
 			<!-- End Row 5 Page control -->
 
 			<!-- Row 6 Game trailer -->

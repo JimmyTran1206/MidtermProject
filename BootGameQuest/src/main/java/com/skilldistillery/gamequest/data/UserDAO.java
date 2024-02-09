@@ -46,6 +46,8 @@ public interface UserDAO {
 	public int userModifyGameFields(Game game);
 	
 	public int userModifyGameScreenShots(int gameId, String [] screenshots);
+	
+	public List<Game> getAllGame();
 
 
 
