@@ -226,5 +226,11 @@ public class UserDAOImpl implements UserDAO {
 		return originalGame.getId();
 	}
 
+	@Override
+	public List<Game> getAllGame() {
+		String query = "SELECT game FROM Game game";
+		return em.createQuery(query, Game.class).getResultList();
+	}
+
 	// END OF USER DAO \\
 }

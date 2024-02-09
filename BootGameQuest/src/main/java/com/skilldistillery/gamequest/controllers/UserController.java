@@ -261,6 +261,14 @@ public class UserController {
 	@GetMapping(value = "viewGameDetails.do")
 	public String viewGameDetails(Model model, @RequestParam("id") int gameId, HttpSession session) {
 		User currentUserTemp = (User) session.getAttribute("loggedIn");
+		
+		// guest log-in
+		if(currentUserTemp==null) {
+			Game game = userDAO.getGameById(gameId);
+			model.addAttribute("game", game);
+			return "GameDetailsGuest";
+		}
+		
 		User currentUser = userDAO.findUserByIdJoinFetchGameList(currentUserTemp.getId());
 		Game game = userDAO.getGameById(gameId);
 		User postedUser = userDAO.findUserByIdJoinFetchGameList(game.getUserId());
@@ -293,24 +301,24 @@ public class UserController {
 		return redirStr;
 	}
 
-	// user - view modify game info 
+	// user - view modify game info
 	@GetMapping(value = "viewModifyGameInfoForm.do")
-	public String userModifyGameInfo(Model model, @RequestParam("id") int gameId ) {
+	public String userModifyGameInfo(Model model, @RequestParam("id") int gameId) {
 		Game game = userDAO.getGameById(gameId);
-		List<GameImage> screenshotList=userDAO.getGameScreenshotList(gameId);
-		int screenshotListSize=0;
-		if(!screenshotList.isEmpty()) {
-			screenshotListSize=screenshotList.size();
+		List<GameImage> screenshotList = userDAO.getGameScreenshotList(gameId);
+		int screenshotListSize = 0;
+		if (!screenshotList.isEmpty()) {
+			screenshotListSize = screenshotList.size();
 		}
 		model.addAttribute("game", game);
 		model.addAttribute("screenshotList", screenshotList);
 		model.addAttribute("screenshotListSize", screenshotListSize);
-		
+
 		return "User/UserModifyGameForm";
 	}
-	
+
 	// user - confirm modifying game confirm userModifyGameConfirm.do
-		@PostMapping(value = "userModifyGameConfirm.do")
+	@PostMapping(value = "userModifyGameConfirm.do")
 	public String userModifyGameConfirm(Game game, @RequestParam(value = "screenshots[]") String[] screenshots) {
 
 		// process the youtube link
@@ -325,5 +333,11 @@ public class UserController {
 		return redirStr;
 	}
 
-	// ------------- END of UserController file ----------------\\
+	// View all games viewAllGames.do
+	@GetMapping(value = "viewAllGames.do")
+	public String viewAllGames(Model model) {
+		List<Game> gameList = userDAO.getAllGame();
+		model.addAttribute("gameList", gameList);
+		return "User/UserViewAllGames";
+	}	// ------------- END of UserController file ----------------\\
 }
