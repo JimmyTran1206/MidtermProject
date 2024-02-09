@@ -27,11 +27,6 @@
 		</div>
 		<div class="row">
 			<div class="col-3">
-			<form action="getAllCharacters" method="GET">
-				<button type="submit" class="btn btn-primary my-2">Character
-					List</button>
-			</form>
-
 				<form action="addNewCharacter" method="GET">
 					<button type="submit" class="btn btn-primary my-2">Add New
 						Character</button>
