@@ -71,7 +71,7 @@
 			<div class="row my-4">
 				<div class="col-1"></div>
 				<div class="col-10 text-center">
-					<h1>${game.title}</h1>
+					<h1 style="display: inline-block; width: 100%; text-align: center;">${game.title}</h1>
 				</div>
 				<div class="col-1"></div>
 			</div>
@@ -171,7 +171,7 @@
 			<div class="modal-content"
 				style="width: 800px; background: rgb(173, 14, 108); background: linear-gradient(90deg, rgba(173, 14, 108, 1) 13%, rgba(77, 9, 148, 1) 56%);">
 				<div class="modal-header text-center">
-					<h1 class="modal-title fs-5" id="exampleModalLabel">${game.title}</h1>
+					<h1 class="modal-title fs-5" id="exampleModalLabel" style="display: inline-block; width: 100%; text-align: center;">${game.title}</h1>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>

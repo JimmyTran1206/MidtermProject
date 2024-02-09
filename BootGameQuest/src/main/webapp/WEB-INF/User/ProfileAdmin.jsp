@@ -12,7 +12,13 @@
 	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
 	crossorigin="anonymous">
 
-<title>User Profile</title>
+<title>Admin Profile</title>
+<style>
+body {
+	background-color: #8d99ae;
+	color: #2b2d42; /* Text color */
+}
+</style>
 </head>
 <body>
 
@@ -54,7 +60,7 @@
 
 			<div class="row">
 				<div class="col-12 text-center my-4">
-					<h3>You currently have XXX users in GameQuest</h3>
+					<h3>You currently have ${numberOfUsers} users in GameQuest</h3>
 					<a href="viewAllUsers.do" class="btn btn-primary my-2 mx-2">
 						View your user list </a>
 				</div>

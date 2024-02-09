@@ -35,7 +35,7 @@
 			<div class="row my-4">
 				<div class="col-2"></div>
 				<div class="col-8 text-center">
-					<h1>${game.title}</h1>
+					<h1 style="display: inline-block; width: 100%; text-align: center;">${game.title}</h1>
 				</div>
 				<div class="col-2"></div>
 			</div>
@@ -43,15 +43,15 @@
 
 			<!-- Row 3 Game Avatar -->
 			<div class="row my-4">
-				<div class="col-2"></div>
+				<div class="col-3"></div>
 
 				<!-- Game avatar -->
-				<div class="col-8 text-center">
+				<div class="col-6 text-center">
 					<img src="${game.avatarUrl}" alt="game avatar" width="100%" />
 				</div>
 				<!-- End Game Avatar -->
 
-				<div class="col-2"></div>
+				<div class="col-3"></div>
 			</div>
 			<!-- End Row 3 -->
 

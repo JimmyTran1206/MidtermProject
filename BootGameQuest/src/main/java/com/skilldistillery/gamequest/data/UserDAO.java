@@ -48,6 +48,10 @@ public interface UserDAO {
 	public int userModifyGameScreenShots(int gameId, String [] screenshots);
 	
 	public List<Game> getAllGame();
+	
+	public int getNumberOfUsers();
+	
+	public int getNumberOfGamesInAUser(int userId);
 
 
 

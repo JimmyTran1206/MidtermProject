@@ -113,6 +113,8 @@ public class UserController {
 	public String showProfile(HttpSession session, Model model) {
 		User currentUser = (User) session.getAttribute("loggedIn");
 		model.addAttribute("user", currentUser);
+		model.addAttribute("numberOfUsers", userDAO.getNumberOfUsers());
+		model.addAttribute("numberOfGames", userDAO.getNumberOfGamesInAUser(currentUser.getId()));
 		if (currentUser.getRole().equals("admin")) {
 			return "User/ProfileAdmin";
 		} else {

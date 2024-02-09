@@ -11,7 +11,7 @@
 	rel="stylesheet"
 	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
 	crossorigin="anonymous" />
-<title>Document</title>
+<title>Game list by title</title>
 <style>
 .user-profile {
 	display: flex;
@@ -66,9 +66,27 @@
 	background: linear-gradient(90deg, rgba(131, 58, 180, 1) 9%,
 		rgba(187, 20, 20, 1) 54%, rgba(252, 176, 69, 1) 89%);
 }
+
+#background-video {
+	width: 100vw;
+	height: 100vh;
+	object-fit: fill;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: -1;
+	opacity: 0.6;
+}
 </style>
 </head>
 <body>
+	<!-- Game detail video background -->
+	<video autoplay muted loop id="background-video">
+		<source src="GameDetailVideoBackground.mp4" type="video/mp4" />
+	</video>
+	<!-- End game detail video background -->
 	<div class="body">
 		<header>
 			<jsp:include page="../nav.jsp" />
@@ -81,24 +99,25 @@
 						<h1>Similar games as your input title</h1>
 					</div>
 				</div>
-				
+
 				<div class="row">
 					<div class="col-2"></div>
 
 					<div class="col-4 text-center my-4">
-						<a href="viewUserAddGameForm.do?title=${gameTitle}" class="btn btn-primary my-2 mx-2">
-							Proceed to add a new game anyway </a>
+						<a href="viewUserAddGameForm.do?title=${gameTitle}"
+							class="btn btn-primary my-2 mx-2"> Proceed to add a new game
+							anyway </a>
 					</div>
-					
+
 					<div class="col-4 text-center my-4">
 						<a href="viewUserGameList.do" class="btn btn-primary my-2 mx-2">
 							Back to my favorite game list </a>
 					</div>
-					
+
 					<div class="col-2"></div>
 				</div>
-				
-				
+
+
 			</div>
 		</main>
 		<main>
@@ -118,11 +137,13 @@
 									<h5>${game.title}</h5>
 								</div>
 								<div>
-									<a href="viewGameDetails.do?id=${game.id}"><img src="${game.avatarUrl}" alt="" width="100%"
-										height="200px" style="display: inline-block" /></a>
+									<a href="viewGameDetails.do?id=${game.id}"><img
+										src="${game.avatarUrl}" alt="" width="100%" height="200px"
+										style="display: inline-block" /></a>
 								</div>
 								<div>
-									<a href="viewGameDetails.do?id=${game.id}" class="btn btn-primary my-2 mx-2">View Details</a>
+									<a href="viewGameDetails.do?id=${game.id}"
+										class="btn btn-primary my-2 mx-2">View Details</a>
 								</div>
 							</section>
 						</c:forEach>

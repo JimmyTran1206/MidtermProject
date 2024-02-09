@@ -12,7 +12,13 @@
 	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
 	crossorigin="anonymous">
 
-<title>User Profile</title>
+<title>User Profile Update</title>
+<style>
+body {
+	background-color: #8d99ae;
+	color: #2b2d42; /* Text color */
+}
+</style>
 </head>
 <body>
 
@@ -32,9 +38,9 @@
 
 			<div class="row">
 				<div class="col-12 text-center my-4">
-					<img src="${user.profilePicture}"
-						width="512px" height="512px" style="border-radius: 50%"
-						alt="profile picture" id="profile-image" />
+					<img src="${user.profilePicture}" width="512px" height="512px"
+						style="border-radius: 50%" alt="profile picture"
+						id="profile-image" />
 				</div>
 			</div>
 
@@ -44,24 +50,27 @@
 				<div class="col-4 text-center my-4">
 					<form action="updateProfileConfirm.do" method="POST">
 						<div class="mb-3">
-							<label for="profile-URL" class="form-label">Profile
-								image URL</label> <input type="text" class="form-control"
-								id="profile-URL" name="profilePicture" value="${user.profilePicture}" required/>
-						</div>
-						
-						<div class="mb-3" style="display:none">
-							<label for="id" class="form-label">id</label> <input
-								type="number" class="form-control" id="id" name="id" value= "${user.id}" />
+							<label for="profile-URL" class="form-label">Profile image
+								URL</label> <input type="text" class="form-control" id="profile-URL"
+								name="profilePicture" value="${user.profilePicture}" required />
 						</div>
 
-						
+						<div class="mb-3" style="display: none">
+							<label for="id" class="form-label">id</label> <input
+								type="number" class="form-control" id="id" name="id"
+								value="${user.id}" />
+						</div>
+
+
 						<div class="mb-3">
 							<label for="username" class="form-label">Username</label> <input
-								type="text" class="form-control" id="username" name="username" value= "${user.username}" required />
+								type="text" class="form-control" id="username" name="username"
+								value="${user.username}" required />
 						</div>
 						<div class="mb-3">
 							<label for="password" class="form-label">Password</label> <input
-								type="password" class="form-control" id="password" name="password" value= "${user.password}" required/>
+								type="password" class="form-control" id="password"
+								name="password" value="${user.password}" required />
 						</div>
 
 						<div class="mb-3"

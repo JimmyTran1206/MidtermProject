@@ -12,8 +12,15 @@
 	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
 	crossorigin="anonymous">
 
-<title>Deactivated User</title>
+<title>User Account Deactivated</title>
+<style>
+body {
+	background-color: #8d99ae;
+	color: #2b2d42; /* Text color */
+}
+</style>
 </head>
+
 <body>
 
 	<header>
@@ -23,14 +30,18 @@
 
 	<main
 		style="display: flex; flex-direction: column; height: 100vh; justify-content: center;">
-		<div class="container p-4 border" style="max-wdth: 800px; margin-top: -10rem;">
+		<div class="container p-4 border"
+			style="max-wdth: 800px; margin-top: -10rem;">
 			<div class="row">
 				<div class="col my-4">
 					<p style="color: firebrick;" id="announcement" class="mt-3">
-						Your account has been deactivated. Please contact the administrator for more details. You can return <a href="home.do" class="text-primary text-decoration-none">home</a> or
-						<a href="login.do" class="text-primary text-decoration-none">log in </a> using annother account, or <a
-							href="register.do" class="text-primary text-decoration-none">register</a>
-						a new account.
+						Your account has been deactivated. Please contact the
+						administrator for more details. You can return <a href="home.do"
+							class="text-primary text-decoration-none">home</a> or <a
+							href="login.do" class="text-primary text-decoration-none">log
+							in </a> using annother account, or <a href="register.do"
+							class="text-primary text-decoration-none">register</a> a new
+						account.
 					</p>
 				</div>
 			</div>

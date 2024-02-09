@@ -11,7 +11,7 @@
 	rel="stylesheet"
 	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
 	crossorigin="anonymous" />
-<title>Add new game</title>
+<title>Modify game</title>
 <style>
 .game-form {
 	max-width: 600px;
@@ -21,9 +21,18 @@
 .btn-muted {
 	background-color: lightgray;
 }
+
+body {
+	background-color: #8d99ae;
+	color: #DDBB56; /* Text color */
+	font-size: 20px;
+}
+
+
 </style>
 </head>
 <body>
+	
 	<header>
 		<jsp:include page="../nav.jsp" />
 	</header>
@@ -33,7 +42,7 @@
 
 				<div class="row my-2">
 					<div class="col text-center">
-						<h1>Modifying game ${game.title}</h1>
+						<h1>Modifying Game ${game.title}</h1>
 						<progress id="progress-bar" aria-label="Content loading…"></progress>
 					</div>
 				</div>
@@ -62,8 +71,7 @@
 
 
 				<div class="row mb-2">
-					<div class="col-1"></div>
-					<div class="col-10 text-center">
+					<div class="col text-center">
 						<div>
 							<h3 id="game-title-display">${game.title}</h3>
 						</div>
@@ -86,7 +94,6 @@
 								value="${game.avatarUrl}" required />
 						</div>
 					</div>
-					<div class="col-1"></div>
 				</div>
 
 				<hr />

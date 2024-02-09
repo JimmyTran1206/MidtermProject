@@ -13,6 +13,12 @@
 	crossorigin="anonymous">
 
 <title>Deactivated User</title>
+<style>
+body {
+        background-color: #8d99ae;
+        color: #2b2d42; /* Text color */
+      }
+</style>
 </head>
 <body>
 

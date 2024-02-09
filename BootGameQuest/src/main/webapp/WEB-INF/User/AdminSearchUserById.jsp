@@ -59,6 +59,9 @@
 	display: flex;
 	flex-direction: column;
 	width: 100vw;
+	height: 100vh;
+	background-color: #8d99ae;
+	color: #2b2d42; /* Text color */
 }
 </style>
 </head>

@@ -13,12 +13,6 @@
 	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
 	crossorigin="anonymous">
 <style>
-#navbar {
-	position: fixed;
-	top: 0;
-	width: 100%;
-	z-index: 1000; /* Ensure it's above other content */
-}
 
 body {
 	background-color: #8d99ae;
@@ -62,6 +56,39 @@ body {
 .card iframe {
 	width: 100%;
 	height: 400px;
+}
+
+ul#game-list {
+	list-style-type: none;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+li.game-tab {
+	margin: 2px;
+	padding: 5px;
+	border-radius: 5px;
+	background: linear-gradient(to right, #153d62, #6094c3);;
+	box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+li.game-tab:hover {
+	cursor: pointer;
+	background: linear-gradient(to right, #290202, #6e0606);
+	position: relative;
+	top: -2px;
+	left: -2px;
+	position: relative;
+	position: relative
+}
+
+a.game-link {
+	display: block;
+	text-decoration: none;
+	color: #c0a50c;
+	font-size: 24px;
+	text-decoration: none;
 }
 </style>
 </head>
@@ -127,16 +154,18 @@ body {
 		</div>
 	</div>
 <!-- Add Game button -->
-<div class="text-center mb-5">
+<!-- <div class="text-center mb-5">
     <a href="NewGameDetails.jsp" class="btn btn-primary">Add Game</a>
-</div>
+</div> -->
 <!-- End of Add Game button -->
 
 
 	<!-- Main Container -->
 	<div class="container mt-5">
-		<h1 class="text-center p-5 mb-5 mt-5">Top 10 games</h1>
-
+		<div class="text-center p-5 mb-5 mt-5">
+			<img src="GameQuestTopTrending.png" alt="" width="100%">
+		</div>
+		<div class="row">
 			<!-- Cards Section -->
 			<div class="container">
 				<div class="row">
@@ -287,8 +316,8 @@ body {
 									</div>
 								</div>
 								<div class="carousel-item">
-								 <div class="row justify-content-center">
-									
+									<div class="row justify-content-center">
+
 										<!-- Card 10 -->
 										<div class="col-md-4">
 											<div class="card">
@@ -301,7 +330,6 @@ body {
 												<div class="card-body">
 													<h5 class="card-title">God of War</h5>
 													<p class="card-text"></p>
-												</div>
 											</div>
 										</div>
 									</div>
@@ -325,8 +353,7 @@ body {
 			<!-- End of Cards Section -->
 
 
-		<!-- Offcanvas for backdrop button -->
-			<%@ include file="OffCanvas.jsp"%>
+			<!-- Offcanvas for backdrop button -->
 			<div class="offcanvas offcanvas-start" data-bs-scroll="true"
 				tabindex="-1" id="offcanvasWithBothOptions"
 				aria-labelledby="offcanvasWithBothOptionsLabel">
@@ -337,12 +364,11 @@ body {
 						aria-label="Close"></button>
 				</div>
 				<div class="offcanvas-body">
-					<ul>
-						<!-- Iterate over the list of games and display id, title, and description -->
+					<ul id="game-list">
+						<!-- Iterate over the list of games and display info -->
 						<c:forEach var="game" items="${gameList}">
-							<li>ID: ${game.id}</li>
-							<li>Title: ${game.title}</li>
-							<li>Description: ${game.description}</li>
+							<a class="game-link" href="viewGameDetails.do?id=${game.id}"><li
+								class="game-tab">${game.title}</li></a>
 						</c:forEach>
 					</ul>
 				</div>

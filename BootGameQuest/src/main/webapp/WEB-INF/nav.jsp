@@ -2,21 +2,25 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="jakarta.tags.core" prefix="c"%>
 
-<header id="navbar">
+<header id="navbar" style="position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;">
 	<nav class="navbar navbar-expand-lg"
 		style="background-color: rgba(159, 197, 232, 0.6); border-bottom: 3px solid #2b2d42;">
 		<div class="container-fluid">
 			<!-- Home Icon -->
 			<div>
 				<a href="home.do" class="navbar-brand gamequest-text" href="#"
-					style="color: #edf2f4;">GameQuest</a>
+					style="color: #edf2f4;"><img src="GameQuest.png" width="75px" alt="" style="position: absolute; top:-5px; left:-5px; "></a>
 			</div>
 			<!-- Home Icon -->
 
 			<!-- Search form -->
-			<div class="d-flex">
-				<form class="d-flex" action="ShowGameDetails" method="GET">
-					<input class="form-control me-2" type="search" name="id"
+			<div style="margin-left: 25px"></div>
+			<div class="d-flex" style="margin-left: 25px">
+				<form class="d-flex" action="viewGameDetails.do" method="GET">
+					<input class="form-control me-2" type="number" name="id"
 						placeholder="Search by ID" aria-label="Search"
 						style="background-color: #edf2f4; color: #2b2d42;">
 					<button class="btn btn-outline-success" type="submit"
@@ -109,3 +113,4 @@
 		</div>
 	</nav>
 </header>
+<section style="margin-top:100px;"></section>

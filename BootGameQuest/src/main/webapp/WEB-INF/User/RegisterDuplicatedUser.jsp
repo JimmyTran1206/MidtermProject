@@ -12,11 +12,16 @@
 	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
 	crossorigin="anonymous">
 
-<title>Insert title here</title>
+<title>Register Duplicated User</title>
 <style>
-    .hidden{
-        display: none;
-    }
+.hidden {
+	display: none;
+}
+
+body {
+	background-color: #8d99ae;
+	color: #2b2d42; /* Text color */
+}
 </style>
 </head>
 <body>
@@ -26,7 +31,7 @@
 
 	</header>
 
-	   <main
+	<main
 		style="display: flex; flex-direction: column; height: 100vh; justify-content: center;">
 		<div class="container p-4 border"
 			style="max-width: 600px; margin-top: -10rem;">
@@ -50,8 +55,8 @@
 						<div class="tab-pane fade border p-4" id="login" role="tabpanel"
 							aria-labelledby="login-tab">
 
-							<p class="mt-3">Please enter your username and password to log
-								in</p>
+							<p class="mt-3">Please enter your username and password to
+								log in</p>
 							<form action="userLogin.do" method="POST">
 								<div class="mb-3">
 									<label for="username" class="form-label">Username</label> <input
@@ -76,8 +81,8 @@
 									<label for="username" class="form-label">Username</label> <input
 										type="text" class="form-control" id="username"
 										aria-describedby="usernameHelp" name="username" required>
-									<div id="usernameHelp" class="form-text">We'll never share
-										your data with anyone else.</div>
+									<div id="usernameHelp" class="form-text">We'll never
+										share your data with anyone else.</div>
 								</div>
 								<div class="mb-3">
 									<label for="password" class="form-label">Password</label> <input
@@ -87,7 +92,11 @@
 								<button type="submit" class="btn btn-primary">Register</button>
 							</form>
 
-                            <p style="color:firebrick;" id="announcement" class="mt-3">Username ${username} has already been registered. Please <a href="login.do" class="text-primary text-decoration-none">log in</a> or use a different username</p>
+							<p style="color: firebrick;" id="announcement" class="mt-3">
+								Username ${username} has already been registered. Please <a
+									href="login.do" class="text-primary text-decoration-none">log
+									in</a> or use a different username
+							</p>
 
 						</div>
 					</div>
@@ -97,9 +106,9 @@
 		</div>
 	</main>
 
-	
 
-<script>
+
+	<script>
     let registerTab=document.getElementById("login-tab");
     let announcement=document.getElementById("announcement");
     registerTab.addEventListener("click", ()=>announcement.classList.add("hidden"));
