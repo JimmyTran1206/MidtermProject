@@ -153,6 +153,12 @@ a.game-link {
 			</button>
 		</div>
 	</div>
+<!-- Add Game button -->
+<!-- <div class="text-center mb-5">
+    <a href="NewGameDetails.jsp" class="btn btn-primary">Add Game</a>
+</div> -->
+<!-- End of Add Game button -->
+
 
 	<!-- Main Container -->
 	<div class="container mt-5">
@@ -180,6 +186,7 @@ a.game-link {
 												</div>
 												<div class="card-body">
 													<h5 class="card-title">Minecraft</h5>
+													<p class="card-text"></p>
 												</div>
 											</div>
 										</div>
@@ -193,6 +200,7 @@ a.game-link {
 												</div>
 												<div class="card-body">
 													<h5 class="card-title">World of Warcraft</h5>
+													<p class="card-text"></p>
 												</div>
 											</div>
 										</div>
@@ -206,6 +214,7 @@ a.game-link {
 												</div>
 												<div class="card-body">
 													<h5 class="card-title">Mortal Kombat</h5>
+													<p class="card-text"></p>
 												</div>
 											</div>
 										</div>
@@ -225,6 +234,7 @@ a.game-link {
 												</div>
 												<div class="card-body">
 													<h5 class="card-title">Call of Duty</h5>
+													<p class="card-text"></p>
 												</div>
 											</div>
 										</div>
@@ -233,11 +243,12 @@ a.game-link {
 											<div class="card">
 												<div class="embed-responsive embed-responsive-16by9">
 													<iframe class="embed-responsive-item"
-														src="https://www.youtube.com/embed/u1oqfdh4xBY"
+														src="https://www.youtube.com/embed/uHGShqcAHlQ?si=d2z0sX8yaJZAZy5F"
 														frameborder="0" allowfullscreen></iframe>
 												</div>
 												<div class="card-body">
-													<h5 class="card-title">PUBG</h5>
+													<h5 class="card-title">Zelda</h5>
+													<p class="card-text"> </p>
 												</div>
 											</div>
 										</div>
@@ -246,11 +257,12 @@ a.game-link {
 											<div class="card">
 												<div class="embed-responsive embed-responsive-16by9">
 													<iframe class="embed-responsive-item"
-														src="https://www.youtube.com/embed/rS75cFVEvUA"
+														src="https://www.youtube.com/embed/arEdruKxrQ8?si=QVZABL5KEuYH0r8x"
 														frameborder="0" allowfullscreen></iframe>
 												</div>
 												<div class="card-body">
-													<h5 class="card-title">Among Us</h5>
+													<h5 class="card-title">Resident Evil</h5>
+													<p class="card-text"></p>
 												</div>
 											</div>
 										</div>
@@ -264,11 +276,12 @@ a.game-link {
 												<!-- Card 7 content goes here -->
 												<div class="embed-responsive embed-responsive-16by9">
 													<iframe class="embed-responsive-item"
-														src="https://www.youtube.com/embed/Wjij-OX9RKI"
+														src="https://www.youtube.com/embed/Ovt7d34_hRA?si=AptYuOCxS412bgMo"
 														frameborder="0" allowfullscreen></iframe>
 												</div>
 												<div class="card-body">
-													<h5 class="card-title">Fornite</h5>
+													<h5 class="card-title">Age of Empires</h5>
+													<p class="card-text"></p>
 												</div>
 											</div>
 										</div>
@@ -277,11 +290,12 @@ a.game-link {
 											<div class="card">
 												<div class="embed-responsive embed-responsive-16by9">
 													<iframe class="embed-responsive-item"
-														src="https://www.youtube.com/embed/q2eLOupmraQ"
+														src="https://www.youtube.com/embed/QdBZY2fkU-0?si=CJ3wCDq9yjMOp2Up"
 														frameborder="0" allowfullscreen></iframe>
 												</div>
 												<div class="card-body">
-													<h5 class="card-title">Valorant</h5>
+													<h5 class="card-title">GTA</h5>
+													<p class="card-text"></p>
 												</div>
 											</div>
 										</div>
@@ -290,11 +304,12 @@ a.game-link {
 											<div class="card">
 												<div class="embed-responsive embed-responsive-16by9">
 													<iframe class="embed-responsive-item"
-														src="https://www.youtube.com/embed/hvoD7ehZPcM"
+														src="https://www.youtube.com/embed/ZcYdoEju54c?si=1IcAb5EfcfmWjNBL"
 														frameborder="0" allowfullscreen></iframe>
 												</div>
 												<div class="card-body">
-													<h5 class="card-title">Grand Theft Auto</h5>
+													<h5 class="card-title">Yakuza</h5>
+													<p class="card-text"></p>
 												</div>
 											</div>
 										</div>
@@ -309,12 +324,12 @@ a.game-link {
 												<!-- Card 1 content goes here -->
 												<div class="embed-responsive embed-responsive-16by9">
 													<iframe class="embed-responsive-item"
-														src="https://www.youtube.com/embed/ZHhqwBwmRkI"
+														src="https://www.youtube.com/embed/K0u_kAWLJOA?si=IuG9szqZ4Rl0KhzN"
 														frameborder="0" allowfullscreen></iframe>
 												</div>
 												<div class="card-body">
-													<h5 class="card-title">League of Legends</h5>
-												</div>
+													<h5 class="card-title">God of War</h5>
+													<p class="card-text"></p>
 											</div>
 										</div>
 									</div>

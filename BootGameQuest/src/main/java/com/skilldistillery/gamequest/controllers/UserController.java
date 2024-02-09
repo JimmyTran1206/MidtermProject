@@ -241,23 +241,46 @@ public class UserController {
 		return "User/UserAddGameForm";
 	}
 
-	// user- confirm adding new game userAddGameConfirm.do
+	// userAddGameConfirm.do
 	@PostMapping(value = "userAddGameConfirm.do")
 	public String userAddGameConfirm(HttpSession session, Game game,
-			@RequestParam(value = "screenshots[]") String[] screenshots) {
-		User currentUser = (User) session.getAttribute("loggedIn");
+	        @RequestParam(value = "screenshots[]") String[] screenshots) {
+	    User currentUser = (User) session.getAttribute("loggedIn");
 
-		// process the youtube link
-		String youtubeURL = game.getTrailerUrl();
-		String youtubeID = youtubeURL.substring(youtubeURL.indexOf("=") + 1, youtubeURL.indexOf("&"));
-		game.setTrailerUrl(youtubeID);
-		// finish processing the youtube link
+	    // Process the YouTube URL to extract the video ID
+	    String youtubeURL = game.getTrailerUrl();
+	    String youtubeID = extractYoutubeVideoId(youtubeURL);
+	    game.setTrailerUrl(youtubeID);
 
-		int gameId = userDAO.userAddNewGame(currentUser.getId(), game, screenshots);
-		String redirStr = "redirect:viewGameDetails.do?id=" + gameId;
+	    // Finish processing the YouTube link
 
-		return redirStr;
+	    int gameId = userDAO.userAddNewGame(currentUser.getId(), game, screenshots);
+	    String redirStr = "redirect:viewGameDetails.do?id=" + gameId;
+
+	    return redirStr;
 	}
+
+	// Method to extract the YouTube video ID from the URL
+	private String extractYoutubeVideoId(String youtubeURL) {
+	    // Check if the URL is not null and contains the video ID parameter
+	    if (youtubeURL != null && youtubeURL.contains("v=")) {
+	        // Find the index of the equal sign and the following ampersand
+	        int startIndex = youtubeURL.indexOf("=") + 1;
+	        int endIndex = youtubeURL.indexOf("&", startIndex);
+	        
+	        // If there's no following ampersand, use the length of the URL as the end index
+	        if (endIndex == -1) {
+	            endIndex = youtubeURL.length();
+	        }
+	        
+	        // Extract the video ID substring
+	        return youtubeURL.substring(startIndex, endIndex);
+	    }
+	    
+	    // If the URL format is invalid or the video ID is not found, return null
+	    return null;
+	}
+
 
 	// user - view game details viewGameDetails.do
 	@GetMapping(value = "viewGameDetails.do")
