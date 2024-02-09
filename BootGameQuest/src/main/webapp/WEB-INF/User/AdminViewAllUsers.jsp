@@ -11,7 +11,7 @@
 	rel="stylesheet"
 	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
 	crossorigin="anonymous" />
-<title>Document</title>
+<title>View All Users</title>
 <style>
 .user-profile {
 	display: flex;
@@ -59,6 +59,11 @@
 	display: flex;
 	flex-direction: column;
 	width: 100vw;
+}
+
+body {
+	background-color: #8d99ae;
+	color: #2b2d42; /* Text color */
 }
 </style>
 </head>

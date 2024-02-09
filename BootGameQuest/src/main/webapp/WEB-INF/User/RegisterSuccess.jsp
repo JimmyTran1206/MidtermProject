@@ -12,7 +12,13 @@
 	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
 	crossorigin="anonymous">
 
-<title>Insert title here</title>
+<title>Register Success</title>
+<style>
+body {
+	background-color: #8d99ae;
+	color: #2b2d42; /* Text color */
+}
+</style>
 </head>
 <body>
 
@@ -29,10 +35,10 @@
 				<div class="col my-4">
 					<ul class="nav nav-tabs" id="myTab" role="tablist">
 						<li class="nav-item" role="presentation">
-								<button class="nav-link active" id="login-tab"
-									data-bs-toggle="tab" data-bs-target="#login" type="button"
-									role="tab" aria-controls="login" aria-selected="true"
-									style="font-size: 1.5rem;">Log In</button>
+							<button class="nav-link active" id="login-tab"
+								data-bs-toggle="tab" data-bs-target="#login" type="button"
+								role="tab" aria-controls="login" aria-selected="true"
+								style="font-size: 1.5rem;">Log In</button>
 						</li>
 					</ul>
 					<div class="tab-content" id="myTabContent">
@@ -53,8 +59,8 @@
 								</div>
 								<button type="submit" class="btn btn-primary">Log In</button>
 							</form>
-							<p id="announcement" class="mt-3 text-primary">
-								Congratuation ${username}! You have successfully register an account. Please
+							<p id="announcement" class="mt-3 text-primary">Congratuation
+								${username}! You have successfully register an account. Please
 								log in using your registered username and password.</p>
 						</div>
 					</div>

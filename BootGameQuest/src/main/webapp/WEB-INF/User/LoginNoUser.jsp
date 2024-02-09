@@ -15,9 +15,14 @@
 <title>Insert title here</title>
 
 <style>
-    .hidden{
-        display: none;
-    }
+.hidden {
+	display: none;
+}
+
+body {
+	background-color: #8d99ae;
+	color: #2b2d42; /* Text color */
+}
 </style>
 </head>
 <body>
@@ -27,77 +32,82 @@
 
 	</header>
 
-<main
-    style="display: flex; flex-direction: column; height: 100vh; justify-content: center;">
-    <div class="container p-4 border"
-        style="max-width: 600px; margin-top: -10rem;">
-        <div class="row">
-            <div class="col my-4">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="login-tab"
-                                data-bs-toggle="tab" data-bs-target="#login" type="button"
-                                role="tab" aria-controls="login" aria-selected="true"
-                                style="font-size: 1.5rem;">Log In</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="register-tab" data-bs-toggle="tab"
-                                data-bs-target="#register" type="button" role="tab"
-                                aria-controls="register" aria-selected="false"
-                                style="font-size: 1.5rem;">Register</button>
-                    </li>
-                </ul>
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active border p-4" id="login"
-                        role="tabpanel" aria-labelledby="login-tab">
-                        <p class="mt-3">Please enter your username and password to log
-                            in</p>
-                        <form action="userLogin.do" method="POST">
-                            <div class="mb-3">
-                                <label for="username" class="form-label">Username</label> <input
-                                    type="text" class="form-control" id="username"
-                                    aria-describedby="usernameHelp" name="username" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label> <input
-                                    type="password" class="form-control" id="password"
-                                    name="password" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Log In</button>
-                        </form>
-                        <p style="color:firebrick;" id="announcement" class="mt-3">Cannot find the user with specified username and password. Please log in using your correct username and password, or <a href="register.do" class="text-primary text-decoration-none">register</a> a new account.</p>
-                    </div>
+	<main
+		style="display: flex; flex-direction: column; height: 100vh; justify-content: center;">
+		<div class="container p-4 border"
+			style="max-width: 600px; margin-top: -10rem;">
+			<div class="row">
+				<div class="col my-4">
+					<ul class="nav nav-tabs" id="myTab" role="tablist">
+						<li class="nav-item" role="presentation">
+							<button class="nav-link active" id="login-tab"
+								data-bs-toggle="tab" data-bs-target="#login" type="button"
+								role="tab" aria-controls="login" aria-selected="true"
+								style="font-size: 1.5rem;">Log In</button>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button class="nav-link" id="register-tab" data-bs-toggle="tab"
+								data-bs-target="#register" type="button" role="tab"
+								aria-controls="register" aria-selected="false"
+								style="font-size: 1.5rem;">Register</button>
+						</li>
+					</ul>
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active border p-4" id="login"
+							role="tabpanel" aria-labelledby="login-tab">
+							<p class="mt-3">Please enter your username and password to
+								log in</p>
+							<form action="userLogin.do" method="POST">
+								<div class="mb-3">
+									<label for="username" class="form-label">Username</label> <input
+										type="text" class="form-control" id="username"
+										aria-describedby="usernameHelp" name="username" required>
+								</div>
+								<div class="mb-3">
+									<label for="password" class="form-label">Password</label> <input
+										type="password" class="form-control" id="password"
+										name="password" required>
+								</div>
+								<button type="submit" class="btn btn-primary">Log In</button>
+							</form>
+							<p style="color: firebrick;" id="announcement" class="mt-3">
+								Cannot find the user with specified username and password.
+								Please log in using your correct username and password, or <a
+									href="register.do" class="text-primary text-decoration-none">register</a>
+								a new account.
+							</p>
+						</div>
 
 
-                    <div class="tab-pane fade border p-4" id="register"
-                        role="tabpanel" aria-labelledby="register-tab">
-                        <p class="mt-3">Please enter your username and password to
-                            register</p>
-                        <form action="userRegister.do" method="POST">
-                            <div class="mb-3">
-                                <label for="username" class="form-label">Username</label> <input
-                                    type="username" class="form-control" id="username"
-                                    aria-describedby="usernameHelp" name="username" required>
-                                <div id="usernameHelp" class="form-text">We'll never share
-                                    your data with anyone else.</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="password" class="form-label">Password</label> <input
-                                    type="password" class="form-control" id="password"
-                                    name="password" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Register</button>
-                        </form>
+						<div class="tab-pane fade border p-4" id="register"
+							role="tabpanel" aria-labelledby="register-tab">
+							<p class="mt-3">Please enter your username and password to
+								register</p>
+							<form action="userRegister.do" method="POST">
+								<div class="mb-3">
+									<label for="username" class="form-label">Username</label> <input
+										type="username" class="form-control" id="username"
+										aria-describedby="usernameHelp" name="username" required>
+									<div id="usernameHelp" class="form-text">We'll never
+										share your data with anyone else.</div>
+								</div>
+								<div class="mb-3">
+									<label for="password" class="form-label">Password</label> <input
+										type="password" class="form-control" id="password"
+										name="password" required>
+								</div>
+								<button type="submit" class="btn btn-primary">Register</button>
+							</form>
 
-                    </div>
-                </div>
-            </div>
+						</div>
+					</div>
+				</div>
 
-        </div>
-    </div>
-</main>
+			</div>
+		</div>
+	</main>
 
-<script>
+	<script>
     let registerTab=document.getElementById("register-tab");
     let announcement=document.getElementById("announcement");
     registerTab.addEventListener("click", ()=>announcement.classList.add("hidden"));

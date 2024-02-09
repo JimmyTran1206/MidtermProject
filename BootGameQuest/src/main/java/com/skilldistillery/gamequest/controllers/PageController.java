@@ -38,7 +38,7 @@ public class PageController {
 	@GetMapping(path = { "/", "home.do", "" })
 	public String index(Model model) {
 		List<Game> games = gameDAO.getAllGames();
-		model.addAttribute("games", games);
+		model.addAttribute("gameList", games);
 		return "home";
 	}
 

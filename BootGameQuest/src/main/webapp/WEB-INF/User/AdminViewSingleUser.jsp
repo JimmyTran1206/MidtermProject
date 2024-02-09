@@ -12,7 +12,13 @@
 	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
 	crossorigin="anonymous">
 
-<title>User Profile</title>
+<title>View Single User</title>
+<style>
+body {
+	background-color: #8d99ae;
+	color: #2b2d42; /* Text color */
+}
+</style>
 </head>
 <body>
 

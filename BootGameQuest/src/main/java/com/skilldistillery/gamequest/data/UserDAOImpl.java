@@ -190,39 +190,39 @@ public class UserDAOImpl implements UserDAO {
 		return game.getGameImages();
 	}
 
-	// (1) Merge with (2) when refactoring  
+	// (1) Merge with (2) when refactoring
 	@Override
 	public int userModifyGameFields(Game game) {
-		Game originalGame= em.find(Game.class, game.getId());
+		Game originalGame = em.find(Game.class, game.getId());
 		// update original game fields
 		originalGame.setTitle(game.getTitle());
 		originalGame.setAvatarUrl(game.getAvatarUrl());
 		originalGame.setTrailerUrl(game.getTrailerUrl());
 		originalGame.setDescription(game.getDescription());
-		
-		//Remove all screenshots
-		List<GameImage> gameImages=originalGame.getGameImages();
-		for(GameImage screenshot: gameImages) {
-			em.remove(screenshot);		
-			}
-		
+
+		// Remove all screenshots
+		List<GameImage> gameImages = originalGame.getGameImages();
+		for (GameImage screenshot : gameImages) {
+			em.remove(screenshot);
+		}
+
 		em.flush();
 		return originalGame.getId();
 	}
 
-
-	// (2) Merge with (1) when refactoring  
+	// (2) Merge with (1) when refactoring
 	@Override
 	public int userModifyGameScreenShots(int gameId, String[] screenshots) {
-		Game originalGame= em.find(Game.class, gameId);
+		Game originalGame = em.find(Game.class, gameId);
 
 		// add screenshots to originalGame
-				for (int i = 0; i < screenshots.length; i++) {
-					GameImage screenshot = new GameImage();
-					screenshot.setImageUrl(screenshots[i]);
-					screenshot.setGame(originalGame);
-					em.persist(screenshot);;
-				}
+		for (int i = 0; i < screenshots.length; i++) {
+			GameImage screenshot = new GameImage();
+			screenshot.setImageUrl(screenshots[i]);
+			screenshot.setGame(originalGame);
+			em.persist(screenshot);
+			;
+		}
 		return originalGame.getId();
 	}
 
@@ -230,6 +230,20 @@ public class UserDAOImpl implements UserDAO {
 	public List<Game> getAllGame() {
 		String query = "SELECT game FROM Game game";
 		return em.createQuery(query, Game.class).getResultList();
+	}
+
+	// get number of users to populate in admin list
+	// admin is not counted as a user.
+	@Override
+	public int getNumberOfUsers() {
+		String query = "SELECT user FROM User user";
+		return em.createQuery(query, Game.class).getResultList().size() - 1;
+	}
+
+	@Override
+	public int getNumberOfGamesInAUser(int userId) {
+		User user = em.find(User.class, userId);
+		return user.getUserGames().size();
 	}
 
 	// END OF USER DAO \\

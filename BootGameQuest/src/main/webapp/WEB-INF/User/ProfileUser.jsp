@@ -13,6 +13,12 @@
 	crossorigin="anonymous">
 
 <title>User Profile</title>
+<style>
+body {
+	background-color: #8d99ae;
+	color: #2b2d42; /* Text color */
+}
+</style>
 </head>
 <body>
 
@@ -57,7 +63,7 @@
 
 			<div class="row">
 				<div class="col-12 text-center my-4">
-					<h3>You currently have XXX games in your list</h3>
+					<h3>You currently have ${numberOfGames} games in your list</h3>
 				</div>
 			</div>
 			<div class="row">
