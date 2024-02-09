@@ -301,10 +301,11 @@ public class UserController {
 		boolean gameInCurrentUserList = false;
 		boolean isOriginalPost = false;
 		String originalAuthor = postedUser.getUsername();
-		if (currentUser.getId() == game.getUserId()) {
+		if (currentUser.getId() == game.getUserId()|| currentUser.getRole().equals("admin")) {
 			allowGameDetailUpdate = true;
 			isOriginalPost = true;
 		}
+		
 		if (currentUser.getUserGames().contains(game)) {
 			gameInCurrentUserList = true;
 		}
