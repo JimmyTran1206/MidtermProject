@@ -11,6 +11,12 @@
 	crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>Character List</title>
+
+<style>
+body {
+	background-color: #8d99ae;
+}
+</style>
 </head>
 <body>
 

@@ -9,6 +9,12 @@
 <meta charset="UTF-8">
 <title>Game Character Form</title>
 </head>
+
+<style>
+body {
+	background-color: #8d99ae;
+}
+</style>
 <body>
 	<c:if test="${empty character}">
 		<div class="container-fluid">
