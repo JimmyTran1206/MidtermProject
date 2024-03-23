@@ -2,19 +2,23 @@
 
 ## How To Run
 
-This project has been deployed to contributors' website hosted by AWS. Please visite the following sites to experience the full features of the app.
+This project has been lived-deployed AWS at [BootGameQuest](http://52.14.238.144:8080/BootGameQuest/). The contributors of this project are
 
-- Jimmy Tran site
-- Jonathon McNamara site
-- Christopher Rasmussen site
+- Jimmy Tran
+- Jonathon McNamara
+- Christopher Rasmussen
 
-User can browse the project in guest view, or login using test account BillyBob with pass 123. Otherwise, user can register a new account with just the username and password. No personal information is stored in this app.
+User can browse the project in guest view, or login using following test accounts
+
+- User account: BillyBob/ pass: 123
+- Admin account: admin/ pass: admin
+  Otherwise, user can register a new account with just the username and password. No personal information is stored in this app.
 
 ## Project Description
 
 ### App features highlight
 
-- Experience stunning and resposive design with user-interface and user-experience in mind by using matrial design minimalist approach.
+- Experience stunning and resposive design with user-interface and user-experience in mind by using material design minimalist approach.
   ![](Homepage.png)
 
 - Manage your profile and your list of favorite game like a pro
